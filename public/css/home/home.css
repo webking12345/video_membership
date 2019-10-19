@@ -1,0 +1,233 @@
+.container-fluid {
+    margin: 10px 0px;
+}
+
+.footer {
+    margin: 30px 0px;
+    text-align: center;
+}
+
+.footer button {
+    margin: 5px 10px;
+    font-weight: bold;
+}
+
+.header-quote {
+    text-align: center;
+}
+
+
+/*category*/
+
+.parent-category {
+    font-size: 25px;
+    width: 50%;
+    margin: 5px 5px;
+}
+
+.dark-purple-button {
+    /* box-shadow: inset 0px 1px 1px 2px #0c0513; */
+    background-color: #151515;
+    /*background: radial-gradient(ellipse at center, #5f5f5f 0%, #3a3a3a 100%);*/
+    border-left: 1px solid #18678c;
+    border-top: 1px solid #2a9fd6;
+    border-right: 1px solid #18678c;
+    border-bottom: 1px solid #2a9fd6;
+    padding: 5px 20px;
+    border-radius: 4px;
+    color: #2a9fd6;
+}
+
+.dark-purple-button:hover {
+    background-color: #313131;
+    color: #2a9fd6;
+}
+
+.brightly-btn {
+    /*box-shadow: inset 0px 1px 1px 2px #0c0513;*/
+    background-color: aliceblue;
+    /*background: radial-gradient(ellipse at center, #5f5f5f 0%, #3a3a3a 100%);*/
+    border-left: 1px solid #18678c;
+    border-top: 1px solid #2a9fd6;
+    border-right: 1px solid #18678c;
+    border-bottom: 1px solid #2a9fd6;
+    padding: 5px 15px;
+    border-radius: 4px;
+    color: #2a9fd6;
+}
+
+.brightly-btn:hover {
+    background-color: #c0c0c0;
+    color: #2a9fd6;
+}
+
+.dark-gray-button {
+    box-shadow: inset 0px 1px 1px 2px #0c0513;
+    background-color: #000000;
+    background: radial-gradient(ellipse at center, #3e3e3e 0%, #1f1e1e 100%);
+    border-left: 1px solid #2f2d2f;
+    border-top: 1px solid #757375;
+    border-right: 1px solid #2f2d2f;
+    border-bottom: 1px solid #757375;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: white;
+}
+
+
+/* mobile category */
+
+#mobile-category {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+
+/* video */
+
+.video {
+    padding: 0px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.video-container {
+    margin: 5px auto;
+    max-width: 640px;
+    max-height: 380px;
+    /*max-width: 1090px;*/
+}
+
+.intro-video {
+    margin: 30px auto;
+}
+
+
+/* video end */
+
+@media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    .parent-category {
+        width: 90%;
+    }
+    video {
+        width: 95%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    /* start of phone styles */
+    video {
+        width: 95%;
+        height: auto;
+    }
+    .parent-category {
+        width: 90%;
+    }
+}
+
+
+/* catalog thumbnail */
+
+.catalog-item {
+    position: relative;
+    text-align: center;
+}
+
+.thumb-img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.overlay {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.background {
+    background-color: #2f2f2fe6;
+    height: 100%;
+}
+
+.catalog-item:hover .overlay {
+    opacity: 0.2;
+}
+
+.catalog-item:hover .overlay {
+    opacity: 1;
+}
+
+.detail-btn {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #2a9fd6;
+    background-color: #0c051300;
+}
+
+
+/* pagenation */
+
+.bootpag {
+    text-align: center;
+    width: 100%;
+}
+
+.pagination li {
+    border: 1px solid #2a9fd6;
+    padding: 2px 5px;
+    min-width: 60px;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+.pagination li a {
+    color: #2a9fd6;
+}
+.darkly.pagination-active{
+    border:solid 1px #eee;
+}
+.brightly.pagination-active{
+    border:solid 1px #222;
+}
+
+#share {
+    text-align: center;
+    text-align-last: center;
+}
+
+#share option {
+    text-align: center;
+}
+
+
+/* details page */
+
+.border-bottom-line {
+    border-bottom: 1px solid;
+}
+
+.service {
+    border: 1px dashed #2a9fd6;
+    min-height: 200px;
+}

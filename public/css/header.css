@@ -1,0 +1,186 @@
+body {
+    font-size: 20px;
+    font-family: helvetica, sans-serif, monospace;
+}
+
+.ft-16 {
+    font-size: 16px;
+}
+
+.ft-20 {
+    font-size: 20px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.darkly {
+    background-color: black;
+    color: white;
+}
+
+.darkly-opacity {
+    background-color: rgba(0, 0, 0, 0.52);
+    color: white;
+}
+
+.brightly {
+    background-color: aliceblue;
+    color: black;
+}
+
+.brightly-opacity {
+    background-color: rgba(240, 248, 255, 0.466);
+    color: black;
+}
+
+.font-color-light-blue {
+    color: #2a9fd6;
+}
+
+.font-color-gray {
+    color: #666666;
+}
+
+.darkly-form-control {
+    background-color: rgba(0, 0, 0,0);
+    border: 1px solid #2a9fd6;
+    font-size: 20px;
+    color: #2a9fd6;
+    padding: .375rem 0rem .375rem 2.75rem;
+}
+.darkly-form-control:focus {
+    background-color: rgba(0, 0, 0,0);
+}
+
+/*.darkly-input-group-text {*/
+
+
+/*    color: #01a9fd;*/
+
+
+/*    background-color: rgba(0, 0, 0, 0);*/
+
+
+/*    border: 1px solid #2a9fd6;*/
+
+
+/*    width:42px;*/
+
+
+/*}*/
+
+.brightly-form-control {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #2a9fd6;
+    font-size: 20px;
+    color: #2a9fd6;
+    padding: .375rem 0rem .375rem 2.75rem;
+}
+.brightly-form-control:focus {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+/*.brightly-input-group-text {*/
+
+
+/*    color: #01a9fd;*/
+
+
+/*    background-color: rgba(0, 0, 0, 0);*/
+
+
+/*    border: 1px solid #2a9fd6;*/
+
+
+/*    width:42px;*/
+
+
+/*    border: none;*/
+
+
+/*}*/
+
+.deactive {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.focus {
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: #2a9fd6 !important;
+}
+
+.input-group {
+    border: 1px solid #2a9fd6;
+    border-radius: 4px;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #2a9fd671 !important;
+    /* Firefox */
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #2a9fd671 !important;
+}
+
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #2a9fd671 !important;
+}
+
+.header-menu {
+    height: 60px;
+}
+
+.navbar-toggler-icon {
+    background-image: url("../images/hamburger.png")
+}
+
+#sticky {
+    padding: 0px 10%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.sticky+.main {
+    padding-top: 60px;
+}
+
+@media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    #sticky {
+        padding: 10px 0px;
+    }
+    video {
+        width: 95%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    /* start of phone styles */
+    #sticky {
+        padding: 10px 0px;
+    }
+    video {
+        width: 95%;
+        height: auto;
+    }
+}
+a{
+    text-decoration: none !important;
+}

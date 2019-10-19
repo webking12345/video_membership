@@ -1,0 +1,171 @@
+.reg-description,
+.membership-ad {
+    border: 1px solid #2a9fd6;
+    color: #2a9fd6;
+    text-align: center;
+    min-height: 150px;
+}
+
+.membership-ad {
+    min-height: 200px;
+}
+
+.img-container {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.img-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+@media screen and (max-width: 479px) {
+    /* start of phone styles */
+    .img-txt {
+        font-size: 30px;
+    }
+}
+
+
+/* priceing card */
+
+.fa-check {
+    color: green;
+}
+
+.fa-close {
+    color: red;
+}
+
+.price {
+    font-size: 35px;
+}
+
+.end {
+    font-size: 15px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.membership-description {
+    border: 1px solid;
+    border-radius: 6px;
+    min-height: 90%;
+    max-height: 100%;
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 10px;
+    color: #2a9fd6;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+    text-align: left;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem 0.75rem .375rem 2.75rem;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+/* a {
+    font-size: 18px;
+    font-family: helvetica, sans-serif, monospace;
+    color: white;
+    text-decoration: none;
+}
+
+sup {
+    font-size: 20px;
+}
+
+ul {
+    list-style: none;
+    font-size: 20px;
+    font-family: helvetica, sans-serif, monospace;
+    color: #9095aa;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    border-bottom: 1px solid #494a5a;
+    padding: 5px;
+    margin: 0px;
+    text-align: center;
+    height: auto;
+    line-height: auto;
+}
+
+.whole {
+    display: inline-block;
+}
+
+.type {
+    border-radius: 5px 5px 0px 0px;
+    background-color: #2a9fd6;
+    height: 62px;
+    border-bottom: 3px solid #217ea8;
+}
+
+.type p {
+    font-family: 'Open Sans';
+    font-weight: 800;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.plan {
+    background-color: #2b2937;
+    border-radius: 0px 0px 5px 5px;
+    font-family: 'Open Sans';
+    font-style: condensed;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.header {
+    border-bottom: 1px solid #494a5a;
+    padding-bottom: 20px;
+}
+
+.header span {
+    font-size: 20px;
+}
+
+.month {
+    font-size: 20px;
+    color: #666666;
+    padding: 0px;
+    margin: -10px;
+} */
