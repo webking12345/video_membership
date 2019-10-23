@@ -43,28 +43,52 @@ class MembershipData_model extends MY_model {
 	
 	/*
 	 * save Membership purchase data 
-	 * If user purchased membership, membership price should add in user balance
 	*/
-	function saveData($userId, $membershipId){
-		$val = array(
-			'user_id'=>$uId,
-			'membership_id'=>($membershipId),
-			'purchase_date'=>(date('Y-m-d'))
-		);
-		$query = $this->insert($val);
+	function saveData($user_id, $membership_id){
+		$this->db->where('id', $user_id);							
+		$query = $this->db->get($this->table);
 
-		//add user balance
-		if($query){
-			//get membership price
-			$this->load->model('MembershipLevel_model', 'levelmodel');
-			$level = $this->levelmodel->get_by_id($membershipId);
-			//add user balance
-			$this->load->model('users', 'usermodel');
-			$balance = $this->users->changeBalance($userId, $level['price'], true);
-			return $balance;
-		}else{
-			return false;	
-		}		
+		if($query->num_rows())
+		{
+			$query="UPDATE ".$this->table." SET membership_id=".$membership_id.", purchase_date=CURRENT_TIMESTAMP WHERE user_id=".$user_id;
+			return $this->db->query($query);
+		}
+		else
+		{
+			$data = array(
+				'user_id'=>$user_id,
+				'membership_id'=>$membership_id
+			);
+			return $this->insert($data);	
+		}
+	}
+
+	//check if current user bought membership
+	function isMember($user_id)
+	{
+		$this->db->where('user_id', $user_id);							
+		$query = $this->db->get($this->table);
+		if($query->num_rows())
+			return true;
+		else
+			return false;
+	}
+
+	//caculate user membership end date
+	function caculateUserMembershipEndDate($user_id)
+	{
+		//get user membership data
+		$sql="SELECT B.timeline, A.purchase_date FROM ".$this->table." AS A";
+		$sql.=" LEFT JOIN membership_level AS B ON B.id=A.membership_id";
+		$sql.=" WHERE A.user_id=".$user_id;
+		
+		$result=$this->db->query($sql);
+		$user_data=$result->row();
+
+		$start = date_timestamp_get(date_create($user_data->purchase_date));
+		$end = $start + (3600*24*$user_data->timeline);
+
+		return date('Y-m-d', $end);
 	}
 }
 

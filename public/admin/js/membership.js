@@ -94,6 +94,7 @@ var DatatablesDataSourceHtml = function() {
             responsive: true,
             searching: false,
             info: false,
+            sort : false,
             paging: false,
             lengthChange: false,
 			columnDefs: columnDefs
@@ -150,6 +151,7 @@ jQuery(document).ready(function($) {
             },
             timeline: {
                 required: true,
+                number: true,
             },
             price: {
                 number:true

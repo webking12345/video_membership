@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 mb-3">
                         <div class="catalog-item"  style="height:170px; background: url('<?php echo substr($content->thumb_url,0,6)=="public"?base_url().$content->thumb_url:$content->thumb_url;?>') no-repeat; background-size:cover">
                             <!-- <div class="overlay">
                                 <div class="background">
@@ -24,21 +24,45 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="font-color-light-blue">
-                            <span>title: </span>
-                            <span class="title"><?php echo $content->title; ?></span>
+                        <div class="font-color-light-blue row">
+                            <div class="w-25" align="right">
+                                <span>title: </span>
+                            </div>
+                            <div class="w-75 pl-2">
+                                <span class="title"><?php echo $content->title; ?></span>
+                            </div>
                         </div>
-                        <div class="font-color-light-blue">
-                            <span>subject: </span>
-                            <span class="subject"><?php echo $content->category_name; ?></span>
+                        <div class="font-color-light-blue row">
+                            <div class="w-25" align="right">
+                                <span>subject: </span>
+                            </div>
+                            <div class="w-75 pl-2">
+                                <span class="subject"><?php echo $content->category_name; ?></span>
+                            </div>
                         </div>
-                        <div class="font-color-light-blue" >
-                            <span>format | duration: </span>
-                            <span><?php echo $content->type==1 ? 'video' : 'pdf'; ?> | <?php echo $content->duration; ?></span>
+                        <div class="font-color-light-blue row" >
+                            <div class="w-25" align="right">
+                                <span>format: </span>
+                            </div>
+                            <div class="w-75 pl-2">
+                                <span><?php echo $content->type==1 ? 'video' : 'pdf'; ?></span>
+                            </div>
                         </div>
-                        <div class="font-color-light-blue">
-                            <span>description: </span>
-                            <div class="description"><?php echo $content->description; ?></div>
+                        <div class="font-color-light-blue row" >
+                            <div class="w-25" align="right">
+                                <span><?php echo $content->type==1 ? 'duration' : 'pages'; ?>: </span>
+                            </div>
+                            <div class="w-75 pl-2">
+                                <span><?php echo $content->duration; ?></span>
+                            </div>
+                        </div>
+                        <div class="font-color-light-blue row">
+                            <div class="w-25" align="right">
+                                <span>description: </span>
+                            </div>
+                            <div class="w-75 pl-2">
+                                <div class="description"><?php echo $content->description; ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,7 +95,7 @@
                         </div>
                         <div class="mt-4">
                             <a href="#">
-                                <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">pay 2 play @ £1.5</button>
+                                <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">pay2play @ $<?php echo $content->price; ?></button>
                             </a>
                         </div>                        
                     </div>

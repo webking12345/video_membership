@@ -43,14 +43,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarCollapse" style="z-index:1; background:rgb(0,0,0,0.8)">
                 <div class="navbar-nav  ml-auto">
                     <a href="<?php echo base_url(); ?>" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">home</a>
-                    <?php if(isset($role)&&$role==1) {?>
-                        <a href="<?php echo base_url(); ?>admin/dashboard" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">admin dashboard</a>
-                    <?php } ?>
                     <?php if(isset($isLoggedIn)&&$isLoggedIn) {?>
-                        <a href="<?php echo base_url(); ?>auth/join" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">myaccount(<?php echo $username; ?>)</a>
+                        <a href="<?php echo base_url(); ?>catalogue" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">catalogue</a>
+
+                        <?php if(isset($role)&&$role==1) {?>
+                            <a href="<?php echo base_url(); ?>admin/dashboard" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">admin dashboard</a>
+                        <?php } else {?>
+                            <a href="<?php echo base_url(); ?>profile" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold"><?php echo $username; ?></a>
+                        <?php } ?>
+
                         <a href="<?php echo base_url(); ?>auth/logout" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">logout</a>
                     <?php } else { ?>
                         <a href="<?php echo base_url(); ?>auth/join" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold" >join</a>

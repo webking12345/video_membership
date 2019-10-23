@@ -96,7 +96,7 @@
                 <div class="m-stack__item m-brand  m-brand--skin-dark ">
                     <div class="m-stack m-stack--ver m-stack--general">
                         <div class="m-stack__item m-stack__item--middle m-stack__item--center m-brand__logo">
-                            <a href="<?php echo base_url(); ?>admin" class="m-brand__logo-wrapper">
+                            <a href="<?php echo base_url(); ?>admin/dashboard" class="m-brand__logo-wrapper">
                                 <img alt="" src="<?php echo base_url(); ?>public/images/logo.png" style="height:50px" />
                             </a>
                         </div>

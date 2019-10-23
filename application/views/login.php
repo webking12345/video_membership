@@ -29,7 +29,7 @@
                 </div>                           
 
                 <div class="join-now-btn mt-5">
-                  <a href="<?php echo base_url();?>users/index/join"><button type="button" class="<?php echo $theme ? "brightly-btn" : "dark-purple-button"; ?> w-100" >join us!</button></a>
+                  <a href="<?php echo base_url();?>auth/join"><button type="button" class="<?php echo $theme ? "brightly-btn" : "dark-purple-button"; ?> w-100" >join us!</button></a>
                 </div>
 
               </div>

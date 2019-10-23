@@ -22,8 +22,8 @@ class Users_model extends MY_Model {
 	*/
 	function getUsersData(){
 		$sql = 'SELECT A.*, B.membership_id FROM users AS A';
-		$sql.=' LEFT JOIN (SELECT * FROM membership_data GROUP BY purchase_date ASC) as B on B.user_id=A.id ';
-		$sql.=' GROUP BY A.id';
+		$sql.=' LEFT JOIN membership_data as B on B.user_id=A.id ';
+		$sql.=' ORDER BY A.id';
 
 		$query = $this->db->query($sql);
 		if(is_null($query->result())){
@@ -109,18 +109,12 @@ class Users_model extends MY_Model {
             if(is_null($query->result())){
                 return false;                
             }else{
-				// if(is_null($pwd) && is_null($email)){
-				// 	$alert = "The same user name already used";
-				// 	return $alert;
-				// }else if(is_null($pwd) && is_null($email)){
-				// 	$alert = "Same Email address already registered";
-				// 	return $alert;
-				// }else{
 				$data = $query->row();
 				return $data;
             }
 		}		
 	}
+
 	/*
 		verify administrator
 	*/

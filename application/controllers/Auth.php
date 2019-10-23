@@ -17,7 +17,8 @@ class Auth extends CI_Controller {
 		$this->load->helper('url_helper');
 		//load session library
 		$this->load->library('session');
-		
+		if($this->session->userdata('isLoggedIn'))
+			redirect("catalogue");
 	}
 
 	//log out
@@ -29,14 +30,11 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
-			show_404();      
+		show_404();      
 	}
 
 	public function login()
 	{
-		if($this->session->userdata('isLoggedIn'))
-			redirect("catalogue");
-
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'auth';
 
@@ -47,48 +45,11 @@ class Auth extends CI_Controller {
 
 	public function register()
 	{
-		if($this->session->userdata('isLoggedIn'))
-			redirect("catalogue");
-			
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'auth';
 
 		$this->load->view('header',$data);
 		$this->load->view('register', $data);
-		$this->load->view('footer', $data);
-	}
-
-	public function join()
-	{
-		if($this->session->userdata('isLoggedIn'))
-			redirect("catalogue");
-
-		if($this->session->userdata("theme")){
-			$data['theme'] = "1";
-		}else{
-			$data['theme'] = "0";
-		}			
-		$data["resource"] = 'auth';
-
-		//get features data
-		$features = $this->feature_model->get_all();
-		foreach($features as $f){
-			$fdata[$f->id] = $f->feature;
-		}
-		$data['feature'] = $fdata;
-		//get membership level data
-		$levels= $this->membershiplevel_model->get_all();
-		foreach($levels as $l){
-			$level[$l->id]['name']= $l->level_name;
-			$level[$l->id]['price']= $l->price;
-			$level[$l->id]['feature']= $l->feature_id;
-			$level[$l->id]['timeline']= $l->timeline;
-		}
-		$data['level'] = $level;
-		
-		$this->load->view('header',$data);
-		$this->load->view('join', $data);
-		$this->load->view('membership', $data);
 		$this->load->view('footer', $data);
 	}
 
@@ -123,6 +84,15 @@ class Auth extends CI_Controller {
 	public function checkUser(){
 		if($_POST){
 			$where = array($_POST['name'] => $_POST['val']);
+
+			//for update profile
+			if($this->session->userdata('isLoggedIn'))
+			{
+				$where = array(
+					$_POST['name'] => $_POST['val'],
+					"id !=" => $this->session->userdata("user_id")
+				);
+			}
 			$verify = $this->users_model->get_where($where);
 			if($verify){
 				echo "1"; exit;

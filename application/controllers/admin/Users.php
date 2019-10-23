@@ -13,6 +13,7 @@ class Users extends CI_Controller {
 		$this->load->model('category_model');
 		$this->load->model('users_model');		
 		$this->load->model('membershiplevel_model');		
+		$this->load->model('membershipdata_model');		
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 
@@ -61,12 +62,7 @@ class Users extends CI_Controller {
 	 *  update user data
 	 */
 	public function update_user(){
-		$data = array(
-			'membership_id' => $_POST["membership"],
-			'user_id' => $_POST["id"]
-		);
-
-		$this->membershipdata_model->insert($data);
+		$this->membershipdata_model->saveData($_POST["id"], $_POST["membership"]);
 
 		if($_POST['password']){
 			$data = array(
