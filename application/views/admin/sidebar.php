@@ -25,6 +25,7 @@
 				</div>
 			</li> -->
 			<li class="m-menu__item <?php echo $page=='Profile'?'m-menu__item--active':''; ?>" aria-haspopup="true"><a href="<?php echo base_url(); ?>admin/profile" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-lock"></i><span class="m-menu__link-text">Change Password</span></a></li>
+			<li class="m-menu__item" aria-haspopup="true"><a href="<?php echo base_url(); ?>home" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-reply"></i><span class="m-menu__link-text">Go Home</span></a></li>
 		</ul>
 	</div>
 

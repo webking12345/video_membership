@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarCollapse" style="z-index:1; background:rgb(0,0,0,0.8)">
+            <div class="collapse navbar-collapse <?php echo (($theme) ? 'brightly-nav' : 'darkly-nav'); ?>" id="navbarCollapse" style="z-index:1;">
                 <div class="navbar-nav  ml-auto">
                     <a href="<?php echo base_url(); ?>" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">home</a>
                     <?php if(isset($isLoggedIn)&&$isLoggedIn) {?>
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <a href="<?php echo base_url(); ?>auth/logout" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">logout</a>
                     <?php } else { ?>
-                        <a href="<?php echo base_url(); ?>auth/join" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold" >join</a>
+                        <a href="<?php echo base_url(); ?>profile/join" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold" >join</a>
                         <a href="<?php echo base_url(); ?>auth/register" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">register</a>
                         <a href="<?php echo base_url(); ?>auth/login" class="nav-item nav-link font-color-light-blue text-center pl-4 font-weight-bold">login</a>
                     <?php }?>

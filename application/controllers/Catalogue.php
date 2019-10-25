@@ -18,6 +18,7 @@ class Catalogue extends CI_Controller {
 		$this->load->model('users_model');
 		$this->load->model('category_model');
 		$this->load->model('contents_model');
+		$this->load->model('membershipdata_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 		//Check Login
@@ -98,12 +99,20 @@ class Catalogue extends CI_Controller {
 			$data["role"]=$user_data->role;
 		}
 		
+		$is_member = $this->membershipdata_model->isMember($this->session->userdata("user_id"));
+		$data["is_member"]=$is_member;
+
 		$data['resource'] = 'catalogue/details';
 		//get content by content id
-		$this->getContents($content_id,'','','','','');
+		$this->getContents($content_id);
 		$data['content']=$this->contents[0];
 
-		$this->getContents('','','',$this->contents[0]->category_id,'','');
+		$this->getContents('','','',$this->contents[0]->category_id);
+		// foreach ($this->contents as $key => $content) {
+		// 	if($content->id == $content_id)
+		// 		unset($this->contents[$key]);
+		// }
+		
 		$data['similar_contents']=$this->contents;
 		$this->load->view('header.php', $data);
 		$this->load->view('catalogue/details.php', $data);

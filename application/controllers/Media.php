@@ -13,8 +13,12 @@ class Media extends CI_Controller {
 		$this->load->model('users_model');
 		$this->load->model('category_model');
 		$this->load->model('contents_model');
+		$this->load->model('membershipdata_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
+		if(!$this->membershipdata_model->isMember($this->session->userdata("user_id")))
+			redirect($_SERVER['HTTP_REFERER']);
+
 	}
 	/**
 	 * 
@@ -55,6 +59,9 @@ class Media extends CI_Controller {
 		$data['thumb_url']=substr($content_data->thumb_url,0,6)=="public"?base_url().$content_data->thumb_url:$content_data->thumb_url;
 		$data['id']=$content_data->id;
 
+		$domain = str_replace('www.', '', parse_url($content_data->contents_url, PHP_URL_HOST));
+		$data['is_youtube'] = $domain=='youtube.com' || $domain=='youtu.be' ? true : false;
+
 		if($content_data->type==1)
 			$data['video_url']=substr($content_data->contents_url,0,6)=="public"?base_url().$content_data->contents_url:$content_data->contents_url;
 		else
@@ -92,6 +99,9 @@ class Media extends CI_Controller {
 		$cate_data = $this->category_model->getOneCategory($category_id);
 		$data['thumb_url']=substr($cate_data->thumb_url,0,6)=="public"?base_url().$cate_data->thumb_url:$cate_data->thumb_url;
 		$data['video_url']=substr($cate_data->video_url,0,6)=="public"?base_url().$cate_data->video_url:$cate_data->video_url;
+
+		$domain = str_replace('www.', '', parse_url($cate_data->video_url, PHP_URL_HOST));
+		$data['is_youtube'] = $domain=='youtube.com' || $domain=='youtu.be' ? true : false;
 
 		$this->load->view('header', $data);
 		$this->load->view('media/video_view', $data);

@@ -10,15 +10,18 @@ class Profile extends CI_Controller {
 		parent::__construct();
 		$this->load->model('users_model');
 		$this->load->model('membershipdata_model');
+		$this->load->model('membershiplevel_model');
+		$this->load->model('feature_model');
 		$this->load->helper('url_helper');
 		//load session library
 		$this->load->library('session');
-		if(!$this->session->userdata("isLoggedIn"))
-			redirect("auth/login");
 	}
 
 	public function index()
 	{
+		if(!$this->session->userdata("isLoggedIn"))
+			redirect("auth/login");
+
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'profile';
 
@@ -30,7 +33,6 @@ class Profile extends CI_Controller {
 		$is_member = $this->membershipdata_model->isMember($this->session->userdata("user_id"));
 		
 		$data["is_member"]=$is_member;
-		
 		$data["membership_end_date"]=$is_member?$this->membershipdata_model->caculateUserMembershipEndDate($this->session->userdata("user_id")):'';
 
 		$data["default_pwd"]=self::$default_pwd;

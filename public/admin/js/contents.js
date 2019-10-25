@@ -117,6 +117,8 @@ var DatatablesDataSourceHtml = function() {
                 $("#price").val(row_data.price)
                 $("#source_url").val(row_data.source_url)
                 $("#thumb_url").val(row_data.thumb_url)
+                $("#duration").val(row_data.duration)
+                $("#size").val(parseInt(row_data.size))
             }
         });
 
@@ -187,11 +189,11 @@ jQuery(document).ready(function($) {
 
         if($(this).val()==1)
         {
-            $("#url_row").css("display","flex")
-            $("#file_row").css("display","none")
+            $(".url_row").css("display","flex")
+            $(".file_row").css("display","none")
         }else{
-            $("#url_row").css("display","none")
-            $("#file_row").css("display","flex")
+            $(".url_row").css("display","none")
+            $(".file_row").css("display","flex")
         }
     })
     
@@ -224,23 +226,7 @@ jQuery(document).ready(function($) {
                         return false;
                 },
             },
-            thumb_url: {
-                required: function(element) {
-                    if($("input[name='source']:checked").val()==1)
-                        return true;
-                    else
-                        return false;
-                },
-            },
             source_file: {
-                required: function(element) {
-                    if($("input[name='source']:checked").val()==2)
-                        return true;
-                    else
-                        return false;
-                }
-            },
-            thumb_file: {
                 required: function(element) {
                     if($("input[name='source']:checked").val()==2)
                         return true;
@@ -255,6 +241,9 @@ jQuery(document).ready(function($) {
                 required: true,
                 number:true
             },
+            size: {
+                number:true
+            },
         },
         
         //display error alert on form submit  
@@ -266,10 +255,6 @@ jQuery(document).ready(function($) {
 
         submitHandler: function (form) {
             let formData=new FormData(form)
-
-            formData.append("file[]",$("#source_file")[0].files[0])
-            formData.append("file[]",$("#thumb_file")[0].files[0])
-
             $.ajax({
                 type: "POST",
                 url: base_url + 'admin/contents/saveData',
@@ -283,7 +268,9 @@ jQuery(document).ready(function($) {
                         document.location.reload(true);
                     }
                 },
-                error: function() {}
+                error: function(error) {
+                    console.log(error);
+                }
             });
 
             return false;
@@ -293,7 +280,7 @@ jQuery(document).ready(function($) {
         $("#m_frm").submit()
     });
 
-    $("#new_feature").click(function(){
+    $("#upload_content").click(function(){
         $(".modal-title").text('Upload Content');
         $("#m_frm").trigger("reset");
     })

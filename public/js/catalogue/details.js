@@ -31,4 +31,15 @@ $(document).ready(function(){
             navText:["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]
         });
     }
+
+    $("#view").click(function(){
+        if(is_member > 0)
+        {
+            return true
+        } else {
+            alert("Please join us or pay to play")
+            return false
+        }
+
+    })
 });

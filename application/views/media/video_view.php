@@ -18,10 +18,13 @@
                                     </div>';
                         }
                 ?>
-
-                <video controls crossorigin playsinline poster="<?php echo $thumb_url; ?>" class="player-container" style="visibility:hidden">
-                    <source src="<?php echo $video_url; ?>" type="video/mp4">            
-                </video>    
+                <?php if(!$is_youtube) { ?>
+                    <video controls crossorigin playsinline poster="<?php echo $thumb_url; ?>" class="player-container" style="visibility:hidden">
+                        <source src="<?php echo $video_url; ?>" type="video/mp4">            
+                    </video>
+                <?php } else { ?>
+                    <iframe src="<?php echo $video_url; ?>" class="player-container" frameborder="0"></iframe>
+                <?php } ?>
 
                 <div class="row mt-3">
                     <?php 

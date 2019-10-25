@@ -138,6 +138,7 @@ video {
 .catalog-item {
     position: relative;
     text-align: center;
+    background-position: center !important;
 }
 
 .thumb-img {

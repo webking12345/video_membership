@@ -54,23 +54,6 @@ body {
     background-color: rgba(0, 0, 0,0);
 }
 
-/*.darkly-input-group-text {*/
-
-
-/*    color: #01a9fd;*/
-
-
-/*    background-color: rgba(0, 0, 0, 0);*/
-
-
-/*    border: 1px solid #2a9fd6;*/
-
-
-/*    width:42px;*/
-
-
-/*}*/
-
 .brightly-form-control {
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #2a9fd6;
@@ -82,26 +65,13 @@ body {
     background-color: rgba(0, 0, 0, 0);
 }
 
+.darkly-nav{
+    background-color: rgba(0, 0, 0, 0.9);
+}
 
-/*.brightly-input-group-text {*/
-
-
-/*    color: #01a9fd;*/
-
-
-/*    background-color: rgba(0, 0, 0, 0);*/
-
-
-/*    border: 1px solid #2a9fd6;*/
-
-
-/*    width:42px;*/
-
-
-/*    border: none;*/
-
-
-/*}*/
+.brightly-nav{
+    background-color: rgba(240, 248, 255, 0.9);
+}
 
 .deactive {
     display: none;

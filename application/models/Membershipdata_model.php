@@ -68,8 +68,14 @@ class MembershipData_model extends MY_model {
 	{
 		$this->db->where('user_id', $user_id);							
 		$query = $this->db->get($this->table);
+
+		$sql="SELECT CURRENT_DATE AS now";
+		$result=$this->db->query($sql);
+		$date=$result->row();
+		$now = $date->now;
+
 		if($query->num_rows())
-			return true;
+			return $now <= $this->caculateUserMembershipEndDate($user_id);
 		else
 			return false;
 	}

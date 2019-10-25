@@ -47,7 +47,7 @@
                   <?php if(!$is_member) {?>
                     <div class="col-lg-6">
                       <div class="form-group mb-3 mt-3">
-                        <a href="<?php echo base_url();?>auth/join">
+                        <a href="<?php echo base_url();?>profile/join">
                           <button type="button" class="pl-5 pr-5 <?php echo $theme ? "brightly-btn" : "dark-purple-button"; ?>">join us</button>
                         </a>
                       </div>

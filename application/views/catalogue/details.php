@@ -70,8 +70,8 @@
                     <div class="col-sm-4 mb-3">
                         <div class="">
                             <!-- type=video  : viewvideo, type=pdf : viewpdf -->
-                            <a href="<?php echo base_url()."media/contents_view/".$content->id; ?>">
-                                <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">view</button>
+                            <a href="<?php echo base_url()."media/contents_view/".$content->id; ?>"  id="view">
+                                <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button"); ?> w-100" >view</button>
                             </a>
                         </div>
                         <div class="mt-4">
@@ -83,21 +83,25 @@
                                 <option value="4">tumbir</option>
                             </select>
                         </div>
-                        <div class="mt-4">
+                        <!-- <div class="mt-4">
                             <a href="<?php echo base_url(); ?>auth/login">
                                 <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100" >login</button>
                             </a>
-                        </div>
-                        <div class="mt-4">
-                            <a href="<?php echo base_url(); ?>auth/join">
-                                <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">join us!</button>
-                            </a>
-                        </div>
-                        <div class="mt-4">
-                            <a href="#">
-                                <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">pay2play @ $<?php echo $content->price; ?></button>
-                            </a>
-                        </div>                        
+                        </div> -->
+                        <?php if(!$is_member && $role==2) {?>
+                            <div class="mt-4">
+                                <a href="<?php echo base_url(); ?>profile/join">
+                                    <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">join us!</button>
+                                </a>
+                            </div>
+
+                            <div class="mt-4">
+                                <a href="#">
+                                    <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">pay2play @ $<?php echo $content->price; ?></button>
+                                </a>
+                            </div>
+                        <?php } ?>
+
                     </div>
                     <div class="col-sm-8 service">
                         <div class="font-color-light-blue">associated service</div>
@@ -109,29 +113,31 @@
             <!-- details end -->
         <section id="similar-items">
             <div class="container">
-                <div class="row mt-4">
-                    <div class="col-sm-12 font-color-light-blue">
-                        <div>similar products</div>
+                <?php if(count($similar_contents)>0) { ?>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 font-color-light-blue">
+                            <div>similar products</div>
+                        </div>
                     </div>
-                </div>
-                <div class="row ml-2 mt-2">
-                    <div class="owl-carousel owl-carousel-category">
-                        <?php foreach ($similar_contents as $content) { ?>
-                            <div class="item">
-                                <div class="catalog-item mr-2 ml-2" style="height:150px; background: url('<?php echo substr($content->thumb_url,0,6)=="public"?base_url().$content->thumb_url:$content->thumb_url;?>') no-repeat; background-size:cover" >
-                                    <div class="overlay">
-                                        <div class="background">
-                                            <div class="font-color-light-blue pt-3"><?php echo $content->title; ?></div>
-                                            <div class="font-color-light-blue" ><?php echo $content->category_name; ?></div>
-                                            <a href="<?php echo base_url().'catalogue/details/'.$content->id; ?>"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto <?php echo $theme?"brightly-btn" : "dark-purple-button";?>">view details</div></a>
-                                        </div>                                
+                    <div class="row ml-2 mt-2">
+                        <div class="owl-carousel owl-carousel-category">
+                            <?php foreach ($similar_contents as $content) { ?>
+                                <div class="item">
+                                    <div class="catalog-item mr-2 ml-2" style="height:150px; background: url('<?php echo substr($content->thumb_url,0,6)=="public"?base_url().$content->thumb_url:$content->thumb_url;?>') no-repeat; background-size:cover" >
+                                        <div class="overlay">
+                                            <div class="background">
+                                                <div class="font-color-light-blue pt-3"><?php echo $content->title; ?></div>
+                                                <div class="font-color-light-blue" ><?php echo $content->category_name; ?></div>
+                                                <a href="<?php echo base_url().'catalogue/details/'.$content->id; ?>"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto <?php echo $theme?"brightly-btn" : "dark-purple-button";?>">view details</div></a>
+                                            </div>                                
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php }?>
-                    </div>                    
-                </div>
-                <div class="row mt-3">
+                            <?php }?>
+                        </div>                    
+                    </div>
+                <?php }?>
+                <div class="row mt-5">
                     <div class="col-sm-12">
                         <a href="<?php echo base_url(); ?>catalogue"><button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?>"> <i class='fa fa-backward'></i> back to catalogue</button></a>
                     </div>
@@ -139,6 +145,9 @@
             </div>            
         </section>
     </div>
+    <script>
+        let is_member = '<?php echo $is_member; ?>'
+    </script>
     
 
     

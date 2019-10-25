@@ -17,8 +17,6 @@ class Auth extends CI_Controller {
 		$this->load->helper('url_helper');
 		//load session library
 		$this->load->library('session');
-		if($this->session->userdata('isLoggedIn'))
-			redirect("catalogue");
 	}
 
 	//log out
@@ -35,6 +33,8 @@ class Auth extends CI_Controller {
 
 	public function login()
 	{
+		if($this->session->userdata('isLoggedIn'))
+			redirect("catalogue");
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'auth';
 
@@ -45,6 +45,8 @@ class Auth extends CI_Controller {
 
 	public function register()
 	{
+		if($this->session->userdata('isLoggedIn'))
+			redirect("catalogue");
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'auth';
 

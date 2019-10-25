@@ -24,6 +24,10 @@ $(document).ready(function() {
                 $(this).removeClass("darkly");
                 $(this).addClass("brightly");
             });
+            $('.darkly-nav').each(function() {
+                $(this).removeClass("darkly-nav");
+                $(this).addClass("brightly-nav");
+            });
             $('.dark-purple-button').each(function() {
                 $(this).removeClass("dark-purple-button");
                 $(this).addClass("brightly-btn");
@@ -32,6 +36,10 @@ $(document).ready(function() {
             $('.brightly').each(function() {
                 $(this).removeClass("brightly");
                 $(this).addClass("darkly");
+            });
+            $('.brightly-nav').each(function() {
+                $(this).removeClass("brightly-nav");
+                $(this).addClass("darkly-nav");
             });
             $('.brightly-btn').each(function() {
                 $(this).removeClass("brightly-btn");

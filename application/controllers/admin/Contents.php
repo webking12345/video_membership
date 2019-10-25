@@ -88,38 +88,25 @@ class Contents extends CI_Controller {
 	}
 
 	public function saveData(){
-		//Calculate PDF pages
-		function count_pages($pdfname) {
-			$pdftext = file_get_contents($pdfname);
-			$num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
-			return $num;
-		}
-
 		if($_POST['source']==1) // By URL
 		{
-			$filePath = $_POST['source_url'];
-			if($filePath){
-				$filename = tempnam(sys_get_temp_dir(),'ci_temp');
-				if (file_put_contents($filename, file_get_contents($filePath, false, null, 0, 300000))) {
-					if (require_once(APPPATH . 'third_party/getid3/getid3.php')) {
-						$getID3 = new getID3;
-						$FileInfo = $getID3->analyze(substr($filename,0,6)=="public" ? $this->base_url().$filename : $filename);
-					}
+			$source_url = $_POST['source_url'];
+			$duration = $_POST['duration'];
+			$size = $_POST['size'];
 
-				unlink($filename);
-				}
-			}
+			$thumb_url = $_POST['type']==1 ? 'public/uploads/video/thumb/default.png' : 'public/uploads/doc/thumb/default.png';
+			$thumb_url = $_POST['thumb_url']!='' ? $_POST['thumb_url'] : $thumb_url;
 
 			$data=array(
 				'title'=>$_POST['title'],
 				'type'=>$_POST['type'],
-				'contents_url'=>$_POST['source_url'],
-				'thumb_url'=>$_POST['thumb_url'],
+				'contents_url'=>$source_url,
+				'thumb_url'=>$thumb_url,
 				'category_id'=>$_POST['category'],
 				'description'=>$_POST['description'],
 				'price'=>$_POST['price'],
-				'duration'=>$_POST['type']==1?$FileInfo['playtime_string']:count_pages($_POST['source_url']),
-				'size'=>substr($_POST['source_url'],0,6)!="public" ? $this->retrieve_remote_file_size($_POST['source_url']) : filesize($_POST['source_url'])
+				'duration'=>$duration,
+				'size'=>$size
 			);
 		}else{ // By Local File
 			if($_POST['type']==1)
@@ -144,6 +131,8 @@ class Contents extends CI_Controller {
 				$thumb_file = $path . "/thumb/" . $source_info['filename'] . "." . $thumb_info['extension'];
 				
 				move_uploaded_file($_FILES['thumb_file']['tmp_name'], $thumb_file);
+			} else {
+				$thumb_file=$path."/thumb/default.png";
 			}
 
 			require_once(APPPATH . 'third_party/getid3/getid3.php');
@@ -171,6 +160,13 @@ class Contents extends CI_Controller {
 
 	public function deleteData(){		
 		echo $this->contents_model->delete($_POST["id"]);
+	}
+
+	//Calculate PDF pages
+	function count_pages($pdfname) {
+		$pdftext = file_get_contents($pdfname);
+		$num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+		return $num;
 	}
 
 	//Calculate file size of Remote file

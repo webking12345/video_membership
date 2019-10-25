@@ -13,7 +13,7 @@
 								<div class="m-portlet__head-tools">
 									<ul class="m-portlet__nav">
 										<li class="m-portlet__nav-item">
-											<a href="#" data-toggle="modal"  data-target="#m_modal" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--icon m-btn--air" id="new_feature">
+											<a href="#" data-toggle="modal"  data-target="#m_modal" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--icon m-btn--air" id="upload_content">
 												<span>
 													<i class="la la-plus"></i>
 													<span>Upload Content</span>
@@ -72,67 +72,6 @@
 										</div>
 									</div>
 									<div class="form-group m-form__group row">
-										<label class="col-form-label col-lg-2 col-sm-12">Type *</label>
-										<div class="col-lg-5 col-md-9 col-sm-12">
-											<select class="form-control m-input" id="type" name="type">
-												<option value="1">Video</option>
-												<option value="2">PDF</option>
-											</select>
-										</div>
-										<div class="col-lg-5 col-md-9 col-sm-12">
-											<div class="m-radio-inline">
-												<label class="m-radio m-radio--success">
-													<input type="radio" name="source" value="1" checked> By URL
-													<span></span>
-												</label>
-												<label class="m-radio m-radio--success">
-													<input type="radio" name="source" value="2"> By File
-													<span></span>
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group m-form__group row" id="url_row">
-										<label class="col-form-label col-lg-2 col-sm-12">URL *</label>
-										<div class="col-lg-5 col-md-9 col-sm-12">
-											<input type="text" class="form-control m-input" id="source_url" name="source_url" placeholder="Enter Source URL">
-										</div>
-										<div class="col-lg-5 col-md-9 col-sm-12">
-											<input type="text" class="form-control m-input" id="thumb_url" name="thumb_url" placeholder="Enter Thumbnail URL">
-										</div>
-									</div>
-									<div class="form-group m-form__group row" id="file_row" style="display:none">
-										<label class="col-form-label col-lg-2 col-sm-12">File *</label>
-										<div class="col-lg-5 col-md-9 col-sm-12">
-											<!-- <div class="m-dropzone dropzone m-dropzone--success dz-clickable" action="inc/api/dropzone/upload.php" id="source_file">
-												<div class="m-dropzone__msg dz-message needsclick">
-													<h3 class="m-dropzone__msg-title">Drop source file here or click to upload.</h3>
-												</div>
-											</div> -->
-											<a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon btn-block" id="btn_source_file">
-												<span>
-													<i class="fa flaticon-interface"></i>
-													<span>Source File</span>
-												</span>
-											</a>
-											<input type="file" class="form-control m-input" id="source_file" name="source_file" accept="video/*" style="display:none">
-										</div>
-										<div class="col-lg-5 col-md-9 col-sm-12">
-											<!-- <div class="m-dropzone dropzone m-dropzone--success dz-clickable" action="inc/api/dropzone/upload.php" id="thumb_file">
-												<div class="m-dropzone__msg dz-message needsclick">
-													<h3 class="m-dropzone__msg-title">Drop thumbnail image here or click to upload.</h3>
-												</div>
-											</div> -->
-											<a href="#" class="btn btn-info m-btn m-btn--custom m-btn--icon btn-block" id="btn_thumb_file">
-												<span>
-													<i class="fa flaticon-interface"></i>
-													<span>Thumbnail Image</span>
-												</span>
-											</a>
-											<input type="file" class="form-control m-input" id="thumb_file" name="thumb_file" accept="image/*" style="display:none">
-										</div>
-									</div>
-									<div class="form-group m-form__group row">
 										<label class="col-form-label col-lg-2 col-sm-12">Category *</label>
 										<div class="col-lg-10 col-md-9 col-sm-12">
 											<select class="form-control m-input" id="category" name="category">
@@ -169,6 +108,66 @@
 												</div>
 												<input type="text" class="form-control m-input" id="price" name="price">
 											</div>
+										</div>
+									</div>
+									<div class="form-group m-form__group row">
+										<label class="col-form-label col-lg-2 col-sm-12">Type *</label>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<select class="form-control m-input" id="type" name="type">
+												<option value="1">Video</option>
+												<option value="2">PDF</option>
+											</select>
+										</div>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<div class="m-radio-inline">
+												<label class="m-radio m-radio--success">
+													<input type="radio" name="source" value="1" checked> By URL
+													<span></span>
+												</label>
+												<label class="m-radio m-radio--success">
+													<input type="radio" name="source" value="2"> By File
+													<span></span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group m-form__group row url_row">
+										<label class="col-form-label col-lg-2 col-sm-12">URL *</label>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<input type="text" class="form-control m-input" id="source_url" name="source_url" placeholder="Enter Source URL">
+										</div>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<input type="text" class="form-control m-input" id="thumb_url" name="thumb_url" placeholder="Enter Thumbnail URL">
+										</div>
+									</div>
+									<div class="form-group m-form__group row url_row">
+										<label class="col-form-label col-lg-2 col-sm-12">Duration</label>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<input type="text" class="form-control m-input" id="duration" name="duration" placeholder="Enter duration">
+										</div>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<input type="text" class="form-control m-input" id="size" name="size" placeholder="Enter file size">
+										</div>
+									</div>
+									<div class="form-group m-form__group row file_row" style="display:none">
+										<label class="col-form-label col-lg-2 col-sm-12">File *</label>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon btn-block" id="btn_source_file">
+												<span>
+													<i class="fa flaticon-interface"></i>
+													<span>Source File</span>
+												</span>
+											</a>
+											<input type="file" class="form-control m-input" id="source_file" name="source_file" accept="video/*" style="display:none">
+										</div>
+										<div class="col-lg-5 col-md-9 col-sm-12">
+											<a href="#" class="btn btn-info m-btn m-btn--custom m-btn--icon btn-block" id="btn_thumb_file">
+												<span>
+													<i class="fa flaticon-interface"></i>
+													<span>Thumbnail Image</span>
+												</span>
+											</a>
+											<input type="file" class="form-control m-input" id="thumb_file" name="thumb_file" accept="image/*" style="display:none">
 										</div>
 									</div>
 								</div>
