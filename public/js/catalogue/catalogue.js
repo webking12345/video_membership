@@ -89,8 +89,7 @@ $(document).ready(function(){
                 res['contents'].map(content => {
                     let list=[
                         '<div class="col-sm-6 col-lg-4 mb-4">',
-                            '<div class="catalog-item">',
-                                '<img class="thumb-img w-100" src="', content['thumb_url'].substr(0,6)=="public" ? (base_url + content['thumb_url']) : content['thumb_url'], '">',
+                            '<div class="catalog-item" style="height:200px; background: url(', content['thumb_url'].substr(0,6)=="public" ? (base_url + content['thumb_url']) : content['thumb_url'], ') no-repeat; background-size:cover">',
                                 '<div class="overlay">',
                                     '<div class="background">',
                                         '<div class="font-color-light-blue pt-5">', content['title'], '</div>',
@@ -99,6 +98,7 @@ $(document).ready(function(){
                                     '</div>',
                                 '</div>',
                             '</div>'].join("\n")
+                            console.log(list)
                     $("#contents").append(list)
                 });
             },

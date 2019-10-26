@@ -18,6 +18,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>public/bootstrap/js/bootstrap.min.js "></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>public/plugins/jquery.bootpag.min.js "></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>public/plugins/owl.carousel.min.js "></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>public/plugins/propeller.min.js "></script>
     <!-- PDF viewer -->
     <!-- <script type="text/javascript" src="<?php echo base_url(); ?>public/plugins/pdfobject.min.js "></script> -->
 

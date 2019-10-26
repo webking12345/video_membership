@@ -66,9 +66,18 @@ class MembershipData_model extends MY_model {
 	//check if current user bought membership
 	function isMember($user_id)
 	{
-		$this->db->where('user_id', $user_id);							
+		//get admin id
+		$this->db->where('role', 1);					
+		$query = $this->db->get('users');
+		$admin=$query->row();
+		if($user_id == $admin->id)
+			return true;
+			
+		// get user that purchased membership
+		$this->db->where('user_id', $user_id);					
 		$query = $this->db->get($this->table);
 
+		//get server date
 		$sql="SELECT CURRENT_DATE AS now";
 		$result=$this->db->query($sql);
 		$date=$result->row();

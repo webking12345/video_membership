@@ -88,7 +88,7 @@
                                 <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100" >login</button>
                             </a>
                         </div> -->
-                        <?php if(!$is_member && $role==2) {?>
+                        <?php if(!$is_member) {?>
                             <div class="mt-4">
                                 <a href="<?php echo base_url(); ?>profile/join">
                                     <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">join us!</button>
@@ -97,7 +97,7 @@
 
                             <div class="mt-4">
                                 <a href="#">
-                                    <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">pay2play @ $<?php echo $content->price; ?></button>
+                                    <button id="pay2play" type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">pay2play @ $<?php echo $content->price; ?></button>
                                 </a>
                             </div>
                         <?php } ?>

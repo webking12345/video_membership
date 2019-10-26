@@ -10,6 +10,13 @@
     border:0;
 }
 
+.membership-indicator-container{
+    min-height: 300px;
+}
+.membership-indicator{
+    height: 350px;
+    margin-bottom:-130px;
+}
 @media screen and (max-width: 479px) {
     /* start of phone styles */
     .player-container {
@@ -18,4 +25,15 @@
     .pdf-viewer-container{
         height: 300px !important;
     }
+    .membership-indicator-container{
+        min-height: 200px;
+    }
+    .membership-indicator{
+        height: 200px;
+        margin-bottom:-65px;
+    }
+}
+
+.container{
+    padding:0 !important;
 }

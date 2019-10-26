@@ -41,5 +41,9 @@ $(document).ready(function(){
             return false
         }
 
+    });
+
+    $("#pay2play").click(function(){
+        alert("Comming soon!!!")
     })
 });

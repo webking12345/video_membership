@@ -46,7 +46,7 @@ class Profile extends CI_Controller {
 	public function join()
 	{
 		$data['theme'] = $this->session->userdata("theme")?1:0;
-		$data["resource"] = 'auth';
+		$data["resource"] = 'join';
 
 		//get features data
 		$features = $this->feature_model->get_all();
