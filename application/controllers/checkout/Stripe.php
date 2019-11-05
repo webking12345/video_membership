@@ -12,6 +12,7 @@ class Stripe extends CI_Controller {
        parent::__construct();
        $this->load->model("users_model");
        $this->load->model("setting_model");
+       $this->load->model("balance_model");
        $this->load->library("session");
        $this->load->helper('url');
     }
@@ -72,7 +73,25 @@ class Stripe extends CI_Controller {
                 "source" => $this->input->post('token'),
                 "description" => $this->session->userdata('checkout_description') 
         ]);
+        
+        //log balance history
+        $user_email = "";
+        if($this->session->userdata("isLoggedIn"))
+        {
+            $user_id = $this->session->userdata("user_id");
+			$user_data = $this->users_model->getUserData('', $user_id);
+			$user_email = $user_data->email;
+        } else {
+            $user_email = $this->session->userdata("tmp")[0]["email"];
+        }
+        $data = array(
+            "user_email" => $user_email,
+            "in_amount" => $this->session->userdata('checkout_amount'),
+            "in_description" => $this->session->userdata('checkout_description')
+        );
 
+        $this->balance_model->insert($data);
+        ///
 		$this->session->unset_userdata('checkout_description');
 		$this->session->unset_userdata('checkout_amount');
         

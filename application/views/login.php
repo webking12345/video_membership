@@ -13,7 +13,7 @@
                   <label for="username" class="font-color-light-blue mb-0 font-color-gray">name</label>
                   <div class="input-icons"> 
                     <i class="m-auto fa fa-user icon"></i> 
-                      <input id="username" name="username" type="text" required class="form-control <?php echo $theme ? "brightly" : "darkly" ?>-form-control"> 
+                      <input id="username" name="username" type="text" required class="form-control <?php echo $theme ? "brightly" : "darkly" ?>-form-control" autofocus> 
                   </div>                  
                 </div>
                 <div class="form-group mb-1">

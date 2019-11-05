@@ -45,7 +45,7 @@ class Purchase_membership_model extends MY_model {
 	 * save Membership purchase data 
 	*/
 	function saveData($user_id, $membership_id){
-		$this->db->where('id', $user_id);							
+		$this->db->where('user_id', $user_id);							
 		$query = $this->db->get($this->table);
 
 		if($query->num_rows())

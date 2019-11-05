@@ -11,7 +11,9 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();		
 		$this->load->model('users_model');		
-		$this->load->model('contents_model');		
+		$this->load->model('contents_model');
+		$this->load->model('purchase_membership_model');
+		$this->load->model('balance_model');
 		$this->load->model('setting_model');		
 		$this->load->helper('url_helper');
 		$this->load->library('session');
@@ -46,7 +48,10 @@ class Dashboard extends CI_Controller {
 		$data["user"] = $this->session->userdata('user');
 		
 		$data['page']='Dashboard';
+		$data['resource']='dashboard';
+
 		$data['totalUsers']=count($this->users_model->getUsersData());
+		$data['totalMembers']=count($this->purchase_membership_model->get_all());
 		
 		$data['totalContents']=count($this->contents_model->getContents());
 		$data['totalVideos']=count($this->contents_model->getContents('', '', '', '', 3));
@@ -56,6 +61,24 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/sidebar', $data);
 		$this->load->view('admin/dashboard');
 		$this->load->view('admin/footer', $data);
+	}
+
+	public function getBalance(){
+		$rows = $this->balance_model->getAllData();
+		$data = array();
+		foreach ($rows as $key => $row) {
+			$data[] = array(
+				'DT_RowId'=> $row->id,
+				'no'=>$key + 1,
+				'name'=>$row->name,
+				'email'=>$row->email,
+				'amount'=>$row->in_amount,
+				'description'=>$row->in_description,
+				'date'=>$row->in_date
+			);
+		}
+
+		echo json_encode($data);
 	}
 }
 

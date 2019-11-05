@@ -77,7 +77,7 @@ $(document).ready(function(){
             type: "POST",
             dataType: "json",
             url: base_url + 'checkout/stripe/setSess',
-            data: { description:  "Purchase content" + content_title , amount : content_price, redirect_url : "media/contents_view/" + content_id},
+            data: { description:  "Purchase content : " + content_title , amount : content_price, redirect_url : "media/contents_view/" + content_id},
             async: false,
             success: function(response) {
                 if(response==1)

@@ -99,12 +99,14 @@ class Users_model extends MY_Model {
 		}	
 	}
 
-	function getUserData($username,$user_id=0){
+	function getUserData($username, $user_id=0){
 		if($username || $user_id){
 			if($user_id>0)
 				$this->db->where('id', $user_id);							
 			else
-				$this->db->where('username', $username);							
+				$this->db->where('username', $username);
+			$this->db->order_by("id", "desc");
+			$this->db->limit(1);
 			$query = $this->db->get('users');
             if(is_null($query->result())){
                 return false;                

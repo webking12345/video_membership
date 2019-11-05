@@ -94,14 +94,14 @@
                     </div>
                     <div class="row ml-2 mt-2">
                         <div class="owl-carousel owl-carousel-category">
-                            <?php foreach ($similar_contents as $content) { ?>
+                            <?php foreach ($similar_contents as $similar_content) { ?>
                                 <div class="item">
-                                    <div class="catalog-item mr-2 ml-2" style="height:150px; background: url('<?php echo substr($content->thumb_url,0,6)=="public"?base_url().$content->thumb_url:$content->thumb_url;?>') no-repeat; background-size:cover" >
+                                    <div class="catalog-item mr-2 ml-2" style="height:150px; background: url('<?php echo substr($similar_content->thumb_url,0,6)=="public"?base_url().$similar_content->thumb_url:$similar_content->thumb_url;?>') no-repeat; background-size:cover" >
                                         <div class="overlay">
                                             <div class="background">
-                                                <div class="font-color-light-blue pt-3"><?php echo $content->title; ?></div>
-                                                <div class="font-color-light-blue" ><?php echo $content->category_name; ?></div>
-                                                <a href="<?php echo base_url().'catalogue/details/'.$content->id; ?>"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto <?php echo $theme?"brightly-btn" : "dark-purple-button";?>">view details</div></a>
+                                                <div class="font-color-light-blue pt-3"><?php echo $similar_content->title; ?></div>
+                                                <div class="font-color-light-blue" ><?php echo $similar_content->category_name; ?></div>
+                                                <a href="<?php echo base_url().'catalogue/details/'.$similar_content->id; ?>"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto <?php echo $theme?"brightly-btn" : "dark-purple-button";?>">view details</div></a>
                                             </div>                                
                                         </div>
                                     </div>

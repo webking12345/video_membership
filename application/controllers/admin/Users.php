@@ -72,7 +72,7 @@ class Users extends CI_Controller {
 	 *  update user data
 	 */
 	public function update_user(){
-		if($_POST["membership"] > 0)
+		if((int)$_POST["membership"] > 0)
 			$this->purchase_membership_model->saveData($_POST["id"], $_POST["membership"]);
 
 		if($_POST['password']){

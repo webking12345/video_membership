@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2019 at 04:59 PM
+-- Generation Time: Nov 05, 2019 at 05:00 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `video_membership`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `balance_history`
+--
+
+CREATE TABLE `balance_history` (
+  `id` int(11) NOT NULL,
+  `user_email` varchar(250) NOT NULL,
+  `in_amount` double DEFAULT NULL,
+  `in_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `in_description` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -65,6 +79,7 @@ CREATE TABLE `contents` (
   `type` int(11) DEFAULT NULL COMMENT 'contents type ex: video:1,txt:2,audio:3, image:4',
   `title` varchar(100) DEFAULT NULL COMMENT 'title',
   `description` varchar(500) DEFAULT NULL COMMENT 'description',
+  `description2` text,
   `duration` varchar(250) DEFAULT NULL COMMENT 'duration ex: video/audio',
   `category_id` int(11) DEFAULT NULL,
   `contents_url` varchar(200) DEFAULT NULL COMMENT 'contents file url',
@@ -80,26 +95,26 @@ CREATE TABLE `contents` (
 -- Dumping data for table `contents`
 --
 
-INSERT INTO `contents` (`id`, `type`, `title`, `description`, `duration`, `category_id`, `contents_url`, `price`, `author_id`, `thumb_url`, `publish_date`, `reg_date`, `size`) VALUES
-(1, 1, 'Rogue One Trailer', '', '136', 6, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 23, NULL, 'public/uploads/video/thumb/default.png', '1000-01-01 00:00:00', '1000-01-01 00:00:00', 0),
-(2, 1, 'Beauty and the Beast', 'a', '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 33, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '1000-01-01 00:00:00', '1000-01-01 00:00:00', 35),
-(3, 2, 'The Dark Tower Trailer', NULL, '120', 2, 'https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf', 43, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '1000-01-01 00:00:00', '1000-01-01 00:00:00', 69),
-(4, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 3, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(5, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 221, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(6, 1, 'Beauty and the Beast', NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 11, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 35),
-(7, 2, 'The Dark Tower Trailer', NULL, '120', 2, 'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf', 234, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 69),
-(8, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 4, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(12, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 1, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(13, 1, 'Beauty and the Beast', NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 76, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 35),
-(14, 2, 'The Dark Tower Trailer', NULL, '120', 2, 'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf', 35, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 69),
-(15, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 20, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(16, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 12, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(17, 1, 'Beauty and the Beast', NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 21, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 35),
-(18, 2, 'The Dark Tower Trailer', NULL, '120', 2, 'https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf', 53, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 69),
-(19, 1, 'Rogue One Trailer', NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 66, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
-(52, 1, 'Test', '', '0:05', 6, 'public/uploads/video/20191018154041_masthead.mp4', 15, NULL, 'public/uploads/video/thumb/20191018154041_masthead.jpg', '2019-10-18 23:40:41', '2019-10-18 23:40:41', 1042080),
-(53, 2, 'Test PDF', '', '7', 7, 'public/uploads/doc/20191018154623_Strongman 2020 Website Design Brief.pdf', 5, NULL, 'public/uploads/doc/thumb/default.png', '2019-10-18 23:46:23', '2019-10-18 23:46:23', 0),
-(55, 1, 'Youtube test1', 'youtube embed test', '10', 9, 'https://www.youtube.com/embed/tgbNymZ7vqY', 5, NULL, 'public/uploads/video/thumb/default.png', '2019-10-25 01:39:16', '2019-10-25 01:39:16', 5000);
+INSERT INTO `contents` (`id`, `type`, `title`, `description`, `description2`, `duration`, `category_id`, `contents_url`, `price`, `author_id`, `thumb_url`, `publish_date`, `reg_date`, `size`) VALUES
+(1, 1, 'Rogue One Trailer', '', NULL, '136', 6, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 23, NULL, 'public/uploads/video/thumb/default.png', '1000-01-01 00:00:00', '1000-01-01 00:00:00', 0),
+(2, 1, 'Beauty and the Beast', 'a', NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 33, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '1000-01-01 00:00:00', '1000-01-01 00:00:00', 35),
+(3, 2, 'The Dark Tower Trailer', NULL, NULL, '120', 2, 'https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf', 43, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '1000-01-01 00:00:00', '1000-01-01 00:00:00', 69),
+(4, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 3, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(5, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 221, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(6, 1, 'Beauty and the Beast', NULL, NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 11, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 35),
+(7, 2, 'The Dark Tower Trailer', NULL, NULL, '120', 2, 'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf', 234, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 69),
+(8, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 4, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(12, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 1, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(13, 1, 'Beauty and the Beast', NULL, NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 76, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 35),
+(14, 2, 'The Dark Tower Trailer', NULL, NULL, '120', 2, 'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf', 35, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 69),
+(15, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 20, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(16, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 12, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(17, 1, 'Beauty and the Beast', NULL, NULL, '150', 1, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4', 21, NULL, 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 35),
+(18, 2, 'The Dark Tower Trailer', NULL, NULL, '120', 2, 'https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf', 53, NULL, 'public/images/video-thumbnail/tech-intro.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 69),
+(19, 1, 'Rogue One Trailer', NULL, NULL, '136', 1, 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4', 66, NULL, 'public/images/video-thumbnail/big-buggy.jpg', '2019-10-18 18:52:56', '2019-10-18 18:52:56', 39),
+(52, 1, 'Test', '', NULL, '0:05', 6, 'public/uploads/video/20191018154041_masthead.mp4', 15, NULL, 'public/uploads/video/thumb/20191018154041_masthead.jpg', '2019-10-18 23:40:41', '2019-10-18 23:40:41', 1042080),
+(53, 2, 'Test PDF', '', NULL, '7', 7, 'public/uploads/doc/20191018154623_Strongman 2020 Website Design Brief.pdf', 5, NULL, 'public/uploads/doc/thumb/default.png', '2019-10-18 23:46:23', '2019-10-18 23:46:23', 0),
+(55, 1, 'Youtube test1', 'youtube embed test', 'This is the description2 for this product', '10', 9, 'https://www.youtube.com/embed/tgbNymZ7vqY', 5, NULL, 'public/uploads/video/thumb/default.png', '2019-10-25 01:39:16', '2019-10-25 01:39:16', 4);
 
 -- --------------------------------------------------------
 
@@ -146,27 +161,61 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id`, `user_id`, `action`, `description`, `user_ip`, `date`) VALUES
-(1, 2, 4, 'visit home page', '::1', '2019-10-26 03:21:20');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `membership_data`
---
-
-CREATE TABLE `membership_data` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `membership_id` int(11) DEFAULT NULL COMMENT 'membership id',
-  `user_id` int(11) DEFAULT NULL COMMENT 'user_id',
-  `purchase_date` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'membership purchase date'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `membership_data`
---
-
-INSERT INTO `membership_data` (`id`, `membership_id`, `user_id`, `purchase_date`) VALUES
-(1, 1, 3, '2019-10-25 03:07:09');
+(1, 2, 6, 'purchase content', '::1', '2019-11-05 13:05:07'),
+(2, 2, 4, 'PlayYoutube test1', '::1', '2019-11-05 13:05:08'),
+(3, 2, 2, 'login', '::1', '2019-11-05 18:49:07'),
+(4, 2, 4, 'PlayYoutube test1', '::1', '2019-11-05 19:03:52'),
+(5, 2, 3, 'logout', '::1', '2019-11-05 19:23:28'),
+(6, 0, 4, 'visit home page', '::1', '2019-11-05 19:23:28'),
+(7, 1, 2, 'login', '::1', '2019-11-05 19:23:34'),
+(8, 1, 4, 'PlayYoutube test1', '::1', '2019-11-05 19:23:39'),
+(9, 1, 3, 'logout', '::1', '2019-11-05 19:47:07'),
+(10, 0, 4, 'visit home page', '::1', '2019-11-05 19:47:07'),
+(11, 18, 1, 'register', '::1', '2019-11-05 19:52:14'),
+(12, 18, 5, 'purchase membership', '::1', '2019-11-05 19:52:14'),
+(13, 18, 4, 'visit home page', '::1', '2019-11-05 19:54:47'),
+(14, 18, 3, 'logout', '::1', '2019-11-05 19:54:50'),
+(15, 0, 4, 'visit home page', '::1', '2019-11-05 19:54:50'),
+(16, 0, 4, 'visit home page', '::1', '2019-11-05 19:56:09'),
+(17, 0, 4, 'visit home page', '::1', '2019-11-05 19:57:17'),
+(18, 22, 1, 'register', '::1', '2019-11-05 19:57:59'),
+(19, 22, 5, 'purchase membership', '::1', '2019-11-05 19:58:00'),
+(20, 22, 3, 'logout', '::1', '2019-11-05 19:58:50'),
+(21, 0, 4, 'visit home page', '::1', '2019-11-05 19:58:50'),
+(22, 1, 2, 'login', '::1', '2019-11-05 19:58:55'),
+(23, 1, 3, 'logout', '::1', '2019-11-05 19:59:10'),
+(24, 0, 4, 'visit home page', '::1', '2019-11-05 19:59:10'),
+(25, 23, 1, 'register', '::1', '2019-11-05 19:59:37'),
+(26, 23, 5, 'purchase membership', '::1', '2019-11-05 19:59:37'),
+(27, 23, 3, 'logout', '::1', '2019-11-05 20:01:37'),
+(28, 0, 4, 'visit home page', '::1', '2019-11-05 20:01:37'),
+(29, 1, 2, 'login', '::1', '2019-11-05 20:01:45'),
+(30, 1, 3, 'logout', '::1', '2019-11-05 20:16:23'),
+(31, 0, 4, 'visit home page', '::1', '2019-11-05 20:16:23'),
+(32, 1, 2, 'login', '::1', '2019-11-05 22:39:31'),
+(33, 1, 3, 'logout', '::1', '2019-11-05 22:55:43'),
+(34, 0, 4, 'visit home page', '::1', '2019-11-05 22:55:43'),
+(35, 22, 2, 'login', '::1', '2019-11-05 22:56:01'),
+(36, 22, 3, 'logout', '::1', '2019-11-05 22:56:29'),
+(37, 0, 4, 'visit home page', '::1', '2019-11-05 22:56:29'),
+(38, 8, 2, 'login', '::1', '2019-11-05 22:57:01'),
+(39, 8, 3, 'logout', '::1', '2019-11-05 22:57:12'),
+(40, 0, 4, 'visit home page', '::1', '2019-11-05 22:57:13'),
+(41, 1, 2, 'login', '::1', '2019-11-05 22:58:59'),
+(42, 0, 4, 'visit home page', '::1', '2019-11-06 01:06:25'),
+(43, 8, 2, 'login', '::1', '2019-11-06 01:06:35'),
+(44, 8, 6, 'purchase content', '::1', '2019-11-06 01:07:00'),
+(45, 8, 4, 'PlayRogue One Trailer', '::1', '2019-11-06 01:07:00'),
+(46, 1, 3, 'logout', '::1', '2019-11-06 01:20:02'),
+(47, 0, 4, 'visit home page', '::1', '2019-11-06 01:20:02'),
+(48, 8, 2, 'login', '::1', '2019-11-06 01:20:14'),
+(49, 8, 6, 'purchase content', '::1', '2019-11-06 01:22:29'),
+(50, 8, 6, 'purchase content', '::1', '2019-11-06 01:22:30'),
+(51, 8, 6, 'purchase content', '::1', '2019-11-06 01:22:30'),
+(52, 8, 4, 'PlayTest', '::1', '2019-11-06 01:22:30'),
+(53, 8, 3, 'logout', '::1', '2019-11-06 01:22:43'),
+(54, 0, 4, 'visit home page', '::1', '2019-11-06 01:22:43'),
+(55, 1, 2, 'login', '::1', '2019-11-06 01:22:48');
 
 -- --------------------------------------------------------
 
@@ -177,9 +226,9 @@ INSERT INTO `membership_data` (`id`, `membership_id`, `user_id`, `purchase_date`
 CREATE TABLE `membership_level` (
   `id` int(10) UNSIGNED NOT NULL,
   `level_name` varchar(100) DEFAULT NULL COMMENT 'membership level name',
-  `description` varchar(500) DEFAULT NULL COMMENT 'membership description',
+  `description` text COMMENT 'membership description',
   `price` float DEFAULT NULL COMMENT 'membership price',
-  `timeline` varchar(100) DEFAULT NULL COMMENT 'membership timeline ex: 1: month, 2: year, 3: lifetime',
+  `timeline` double DEFAULT '0' COMMENT 'membership timeline ex: 1: month, 2: year, 3: lifetime',
   `feature_id` varchar(200) DEFAULT NULL COMMENT 'feature id list ex: 1,2,3'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -188,10 +237,11 @@ CREATE TABLE `membership_level` (
 --
 
 INSERT INTO `membership_level` (`id`, `level_name`, `description`, `price`, `timeline`, `feature_id`) VALUES
-(1, 'weekly', '1 week available', 15, '7', ',1'),
-(2, 'monthly', '1 month available', 50, '30', '2,3,1'),
-(3, 'yearly', '1 year available', 100, '365', '1,2,3,4,5'),
-(4, 'lifetime', 'Lifetime available', 200, '999999', '2,3,4,5,6,7,1');
+(1, 'No member', 'Please level up membership to purchase', 0, 0, NULL),
+(2, 'weekly', '1 week available\n\nsdfsdfsdf', 15, 7, NULL),
+(3, 'montly', '1 month available', 50, 30, NULL),
+(4, 'yearly', '1 year available', 100, 365, NULL),
+(5, 'lifetime', 'lifetime available', 200, 999999, NULL);
 
 -- --------------------------------------------------------
 
@@ -205,6 +255,58 @@ CREATE TABLE `order` (
   `contents_id` int(11) DEFAULT NULL COMMENT 'contents id',
   `browse_time` datetime DEFAULT '1000-01-01 00:00:00' COMMENT 'Date and time when the user browse the content'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase_contents`
+--
+
+CREATE TABLE `purchase_contents` (
+  `id` int(11) NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `purchase_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_played` int(1) NOT NULL DEFAULT '0',
+  `play_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase_membership`
+--
+
+CREATE TABLE `purchase_membership` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `membership_id` int(11) NOT NULL COMMENT 'membership id',
+  `user_id` int(11) NOT NULL COMMENT 'user_id',
+  `purchase_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'membership purchase date'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL,
+  `site_title` varchar(250) DEFAULT NULL,
+  `copyright` varchar(250) DEFAULT NULL,
+  `welcome_text` text,
+  `register_description1` text,
+  `register_description2` text,
+  `login_description` text,
+  `join_description` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `site_title`, `copyright`, `welcome_text`, `register_description1`, `register_description2`, `login_description`, `join_description`) VALUES
+(1, 'Lifestyle', 'Copyright@2019 Lifestyle.com', 'Lifestyle is dedicated to bringing inspirational stories to light, \nusing the power of video and the internet to multiply acts of kindness, beauty, and generosity.', 'Please write a description1 on the setting page of the admin panel.', 'Please write a description2 on the setting page of the admin panel.', 'Please write a description on the setting page of the admin panel.', 'Please write a description on the setting page of the admin panel.');
 
 -- --------------------------------------------------------
 
@@ -229,14 +331,27 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `role`, `reg_datetime`, `last_datetime`, `balance`, `allow`) VALUES
-(1, 'admin', 'admin@123.com', 'e10adc3949ba59abbe56e057f20f883e', 1, '2019-09-18 03:29:23', '2019-09-18 03:29:23', 0, 1),
+(1, 'admin', 'admin@1123.com', 'e10adc3949ba59abbe56e057f20f883e', 1, '2019-09-18 03:29:23', '2019-09-18 03:29:23', 0, 1),
 (2, 'user', 'user@123.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-09-18 04:04:36', '2019-09-18 04:04:36', 15, 1),
 (3, 'user1', 'user1@123.com', 'c4ca4238a0b923820dcc509a6f75849b', 2, '2019-09-18 11:00:42', '2019-09-18 11:00:42', 0, 1),
-(4, 'test', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', 2, '2019-09-28 20:44:09', '2019-09-28 20:44:09', 0, 1);
+(4, 'test', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', 2, '2019-09-28 20:44:09', '2019-09-28 20:44:09', 0, 1),
+(7, 'user', 'test@test1.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-01 01:40:34', '2019-11-01 01:40:34', 0, 1),
+(8, 'user', 'test@tesat.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-01 01:44:12', '2019-11-01 01:44:12', 0, 1),
+(16, 'user101', 'user101@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-05 11:50:30', '2019-11-05 11:50:30', 0, 1),
+(17, 'user102', 'user102@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-05 12:07:42', '2019-11-05 12:07:42', 0, 1),
+(18, 'user103', 'user103@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-05 19:52:14', '2019-11-05 19:52:14', 0, 1),
+(22, 'user103', 'user105@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-05 19:57:59', '2019-11-05 19:57:59', 0, 1),
+(23, 'user106', 'user106@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, '2019-11-05 19:59:37', '2019-11-05 19:59:37', 0, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `balance_history`
+--
+ALTER TABLE `balance_history`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
@@ -264,12 +379,6 @@ ALTER TABLE `history`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `membership_data`
---
-ALTER TABLE `membership_data`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `membership_level`
 --
 ALTER TABLE `membership_level`
@@ -282,14 +391,39 @@ ALTER TABLE `order`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `purchase_contents`
+--
+ALTER TABLE `purchase_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `purchase_membership`
+--
+ALTER TABLE `purchase_membership`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQUE` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `balance_history`
+--
+ALTER TABLE `balance_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -313,19 +447,13 @@ ALTER TABLE `feature_list`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `membership_data`
---
-ALTER TABLE `membership_data`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `membership_level`
 --
 ALTER TABLE `membership_level`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -334,10 +462,28 @@ ALTER TABLE `order`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `purchase_contents`
+--
+ALTER TABLE `purchase_contents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `purchase_membership`
+--
+ALTER TABLE `purchase_membership`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
