@@ -22,7 +22,7 @@ class Users_model extends MY_Model {
 	*/
 	function getUsersData(){
 		$sql = 'SELECT A.*, B.membership_id FROM users AS A';
-		$sql.=' LEFT JOIN membership_data as B on B.user_id=A.id ';
+		$sql.=' LEFT JOIN purchase_membership as B on B.user_id=A.id ';
 		$sql.=' ORDER BY A.id';
 
 		$query = $this->db->query($sql);

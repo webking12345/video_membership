@@ -4,7 +4,7 @@
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>LifeStyle | <?php echo $page; ?></title>
+		<title><?php echo isset($title) ? $title : 'Lifestyle'; ?> | <?php echo $page; ?></title>
 		<meta name="description" content="Latest updates and statistic charts">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
@@ -152,7 +152,7 @@
                                                     </div>
                                                     <div class="m-card-user__details">
                                                         <span class="m-card-user__name m--font-weight-500">Admin</span>
-                                                        <a href="" class="m-card-user__email m--font-weight-300 m-link">admin@gmail.com</a>
+                                                        <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php echo $email; ?></a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -7,10 +7,10 @@
                 <div class="row mt-4">
                     <div class="col-sm-12 header-quote ">
                         <h1 class="title font-color-light-blue mb-0 mt-0">
-                            Welcome to Lifestyle
+                            Welcome to <?php echo isset($title) ? $title : '';?>
                         </h1>
-                        <div class="content text-secondary ft-16">
-                            Lifestyle is dedicated to bringing inspirational stories to light,<br>using the power of video and the internet to multiply acts of kindness, beauty, and generosity.
+                        <div class="content text-secondary ft-16 mt-3">
+                            <?php echo isset($welcome_text) ? nl2br($welcome_text) : '' ; ?>
                         </div>
                     </div>
                 </div>

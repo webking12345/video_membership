@@ -37,3 +37,7 @@
 .container{
     padding:0 !important;
 }
+
+pre {
+    font-family: helvetica, sans-serif, monospace;
+}

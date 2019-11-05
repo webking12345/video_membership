@@ -11,7 +11,8 @@ class Category extends CI_Controller {
 	{
 		parent::__construct();		
 		$this->load->model('category_model');
-		$this->load->model('users_model');		
+		$this->load->model('users_model');
+		$this->load->model('setting_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 
@@ -34,6 +35,16 @@ class Category extends CI_Controller {
 		}
 		$data['page']='Category';
 		$data['resource'] = "category";
+		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
+		$data['email'] = $user_data->email;
+		
+		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
+
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
 
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/sidebar', $data);

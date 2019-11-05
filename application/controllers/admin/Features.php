@@ -12,6 +12,7 @@ class Features extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('feature_model');
 		$this->load->model('users_model');
+		$this->load->model('setting_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 
@@ -34,6 +35,15 @@ class Features extends CI_Controller {
 		}
 		$data['page']='Features';
 		$data['resource'] = "features";
+
+		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
+		$data['email'] = $user_data->email;
+		
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
 
 		$data['features'] = $this->feature_model->get_all();
 

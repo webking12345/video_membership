@@ -13,12 +13,12 @@ class Media extends CI_Controller {
 		$this->load->model('users_model');
 		$this->load->model('category_model');
 		$this->load->model('contents_model');
-		$this->load->model('membershipdata_model');
+		$this->load->model('purchase_membership_model');
+		$this->load->model('purchase_contents_model');
+		$this->load->model('setting_model');
+		$this->load->model('history_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
-		if(!$this->membershipdata_model->isMember($this->session->userdata("user_id")))
-			redirect($_SERVER['HTTP_REFERER']);
-
 	}
 	/**
 	 * 
@@ -37,6 +37,9 @@ class Media extends CI_Controller {
 			redirect("auth/login");
 		}
 
+		if(!$this->purchase_membership_model->isMember($this->session->userdata("user_id")) && !$this->purchase_contents_model->is_purchased($content_id, $this->session->userdata("user_id")))
+			redirect($_SERVER['HTTP_REFERER']);
+			
 		//keep theme
 		if($this->session->userdata("theme")){
 			$data['theme'] = "1";
@@ -52,6 +55,12 @@ class Media extends CI_Controller {
 			$data["role"]=$user_data->role;
 		}
 
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
+
 		$data['resource'] = 'media';
 		//get content by content id
 		$data['view'] = 'contents';
@@ -59,6 +68,7 @@ class Media extends CI_Controller {
 		$data['thumb_url']=substr($content_data->thumb_url,0,6)=="public"?base_url().$content_data->thumb_url:$content_data->thumb_url;
 		$data['id']=$content_data->id;
 
+		//check youtube
 		$domain = str_replace('www.', '', parse_url($content_data->contents_url, PHP_URL_HOST));
 		$data['is_youtube'] = $domain=='youtube.com' || $domain=='youtu.be' ? true : false;
 
@@ -73,7 +83,13 @@ class Media extends CI_Controller {
 		else
 			$this->load->view('media/pdf_view', $data);
 
-		$this->load->view('footer');		
+		$this->load->view('footer');
+		
+		//log history
+		$this->history_model->addHistory($this->session->userdata("user_id"), 4, 'Play' . $content_data->title, $this->input->ip_address()); // 2nd prams -> 1: register, 2: login, 3:logout, 4: visit page, 5: join membership, 6: purchase contents
+
+		//set purchase status of content as played
+		$this->purchase_contents_model->setPlayed($content_id, $this->session->userdata("user_id"));
 	}
 
 	public function category_view($category_id)
@@ -93,6 +109,12 @@ class Media extends CI_Controller {
 			$data["role"]=$user_data->role;
 		}
 
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
+		
 		$data['view']="category";
 		$data['resource'] = 'media';
 		//get content by content id

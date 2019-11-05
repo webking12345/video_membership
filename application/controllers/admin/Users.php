@@ -13,7 +13,8 @@ class Users extends CI_Controller {
 		$this->load->model('category_model');
 		$this->load->model('users_model');		
 		$this->load->model('membershiplevel_model');		
-		$this->load->model('membershipdata_model');		
+		$this->load->model('purchase_membership_model');		
+		$this->load->model('setting_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 
@@ -36,6 +37,15 @@ class Users extends CI_Controller {
 		}
 		$data['page']='Users';
 		$data['resource'] = "users";
+		
+		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
+		$data['email'] = $user_data->email;
+
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
 
 		$data['users'] = $this->users_model->getUsersData();
 		$data['membership_levels'] = $this->membershiplevel_model->get_all();
@@ -62,7 +72,8 @@ class Users extends CI_Controller {
 	 *  update user data
 	 */
 	public function update_user(){
-		$this->membershipdata_model->saveData($_POST["id"], $_POST["membership"]);
+		if($_POST["membership"] > 0)
+			$this->purchase_membership_model->saveData($_POST["id"], $_POST["membership"]);
 
 		if($_POST['password']){
 			$data = array(

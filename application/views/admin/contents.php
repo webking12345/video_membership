@@ -34,6 +34,7 @@
 											<th>Category</th>
 											<th>Title</th>
 											<th>Description</th>
+											<th>Description2</th>
 											<th>Duration</th>
 											<th>Price</th>
 											<th>Size</th>
@@ -97,6 +98,12 @@
 										<label class="col-form-label col-lg-2 col-sm-12">Description</label>
 										<div class="col-lg-10 col-md-9 col-sm-12">
 											<textarea class="form-control m-input" id="description" name="description" placeholder="Enter Description"></textarea>
+										</div>
+									</div>
+									<div class="form-group m-form__group row">
+										<label class="col-form-label col-lg-2 col-sm-12">Description2</label>
+										<div class="col-lg-10 col-md-9 col-sm-12">
+											<textarea class="form-control m-input" id="description2" name="description2" placeholder="Enter Description2"></textarea>
 										</div>
 									</div>
 									<div class="form-group m-form__group row">

@@ -18,7 +18,9 @@ class Catalogue extends CI_Controller {
 		$this->load->model('users_model');
 		$this->load->model('category_model');
 		$this->load->model('contents_model');
-		$this->load->model('membershipdata_model');
+		$this->load->model('purchase_membership_model');
+		$this->load->model('purchase_contents_model');
+		$this->load->model('setting_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 		//Check Login
@@ -46,6 +48,12 @@ class Catalogue extends CI_Controller {
 			$data["isLoggedIn"]=true;
 			$data["username"]=$user_data->username;
 			$data["role"]=$user_data->role;
+		}
+
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
 		}
 
 		$data['resource'] = 'catalogue/catalogue';		
@@ -99,9 +107,19 @@ class Catalogue extends CI_Controller {
 			$data["role"]=$user_data->role;
 		}
 		
-		$is_member = $this->membershipdata_model->isMember($this->session->userdata("user_id"));
+		$is_member = $this->purchase_membership_model->isMember($this->session->userdata("user_id"));
 		$data["is_member"]=$is_member;
 
+		//Check purchased
+		$is_purchased = $this->purchase_contents_model->is_purchased($content_id, $this->session->userdata("user_id"));
+		$data["is_purchased"]=$is_purchased;
+
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
+		
 		$data['resource'] = 'catalogue/details';
 		//get content by content id
 		$this->getContents($content_id);

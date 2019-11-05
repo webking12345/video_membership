@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HOME</title>
+    <title><?php echo isset($title) ? $title . ' | ' : '';?>HOME</title>
     <meta name="description" content='All about meta tags and how to add them to your website.'>
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/fonts/font-awesome/css/font-awesome.min.css"> 
@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/home/home.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/home/users.css">
-    <?php if($resource=="catalogue/details"){?>
+    <?php if(isset($resource) && $resource=="catalogue/details"){?>
         <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/owl-carousel/owl.carousel.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/owl-carousel/owl.theme.css">
     <?php }?>

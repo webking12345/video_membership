@@ -33,6 +33,7 @@ var DatatablesDataSourceHtml = function() {
                 { "data": "category" },
                 { "data": "title" },
                 { "data": "description" },
+                { "data": "description2" },
                 { "data": "duration" },
                 { "data": "price" },
                 { "data": "size" },
@@ -84,7 +85,7 @@ var DatatablesDataSourceHtml = function() {
 					},
                 },
                 {
-					targets: 6,
+					targets: 7,
 					render: function(data, type, full, meta) {
                         return "$ " + data;
 					},
@@ -114,6 +115,7 @@ var DatatablesDataSourceHtml = function() {
 
                 $("#category").val(row_data.category)
                 $("#description").val(row_data.description)
+                $("#description2").val(row_data.description2)
                 $("#price").val(row_data.price)
                 $("#source_url").val(row_data.source_url)
                 $("#thumb_url").val(row_data.thumb_url)

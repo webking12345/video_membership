@@ -229,6 +229,6 @@ video {
 }
 
 .service {
-    border: 1px dashed #2a9fd6;
+    border: solid 1px #2a9fd6;
     min-height: 200px;
 }

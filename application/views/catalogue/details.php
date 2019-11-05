@@ -25,44 +25,24 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="font-color-light-blue row">
-                            <div class="w-25" align="right">
-                                <span>title: </span>
-                            </div>
-                            <div class="w-75 pl-2">
-                                <span class="title"><?php echo $content->title; ?></span>
-                            </div>
+                            <span style="color:grey">title: </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="title content-title"><?php echo $content->title; ?></span>
                         </div>
                         <div class="font-color-light-blue row">
-                            <div class="w-25" align="right">
-                                <span>subject: </span>
-                            </div>
-                            <div class="w-75 pl-2">
-                                <span class="subject"><?php echo $content->category_name; ?></span>
-                            </div>
+                            <span style="color:grey">subject: </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="subject"><?php echo $content->category_name; ?></span>
                         </div>
                         <div class="font-color-light-blue row" >
-                            <div class="w-25" align="right">
-                                <span>format: </span>
-                            </div>
-                            <div class="w-75 pl-2">
-                                <span><?php echo $content->type==1 ? 'video' : 'pdf'; ?></span>
-                            </div>
+                            <span style="color:grey">format: </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span><?php echo $content->type==1 ? 'video' : 'pdf'; ?></span>
                         </div>
                         <div class="font-color-light-blue row" >
-                            <div class="w-25" align="right">
-                                <span><?php echo $content->type==1 ? 'duration' : 'pages'; ?>: </span>
-                            </div>
-                            <div class="w-75 pl-2">
-                                <span><?php echo $content->duration; ?></span>
-                            </div>
+                            <span style="color:grey"><?php echo $content->type==1 ? 'duration:' : 'pages: &nbsp;&nbsp;&nbsp;'; ?> </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span><?php echo $content->duration; ?></span>
                         </div>
                         <div class="font-color-light-blue row">
-                            <div class="w-25" align="right">
-                                <span>description: </span>
-                            </div>
-                            <div class="w-75 pl-2">
-                                <div class="description"><?php echo $content->description; ?></div>
-                            </div>
+                            <span style="color:grey">description: </span> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="description"><?php echo $content->description; ?></div>
                         </div>
                     </div>
                 </div>
@@ -74,21 +54,12 @@
                                 <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button"); ?> w-100" >view</button>
                             </a>
                         </div>
-                        <div class="mt-4">
-                            <select id="share" name="share" class="condition-select browser-default custom-select <?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> ft-20">
-                                <option selected="selected">share</option>
-                                <option value="1">facebook</option>
-                                <option value="2">twitter</option>
-                                <option value="3">email</option>
-                                <option value="4">tumbir</option>
-                            </select>
-                        </div>
                         <!-- <div class="mt-4">
                             <a href="<?php echo base_url(); ?>auth/login">
                                 <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100" >login</button>
                             </a>
                         </div> -->
-                        <?php if(!$is_member) {?>
+                        <?php if(!$is_member && !$is_purchased) {?>
                             <div class="mt-4">
                                 <a href="<?php echo base_url(); ?>profile/join">
                                     <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">join us!</button>
@@ -103,8 +74,10 @@
                         <?php } ?>
 
                     </div>
-                    <div class="col-sm-8 service">
-                        <div class="font-color-light-blue">associated service</div>
+                    <div class="col-sm-7 service ml-3 mr-3">
+                        <div class="font-color-light-blue p-2">
+                            <?php echo nl2br($content->description2); ?>
+                        </div>
                         <div class=""></div>
                     </div>                    
                 </div>
@@ -147,6 +120,10 @@
     </div>
     <script>
         let is_member = '<?php echo $is_member; ?>'
+        let is_purchased = '<?php echo $is_purchased; ?>'
+        let content_id = '<?php echo $content->id; ?>'
+        let content_title = '<?php echo $content->title; ?>'
+        let content_price = '<?php echo $content->price; ?>'
     </script>
     
 

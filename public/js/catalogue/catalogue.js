@@ -98,7 +98,6 @@ $(document).ready(function(){
                                     '</div>',
                                 '</div>',
                             '</div>'].join("\n")
-                            console.log(list)
                     $("#contents").append(list)
                 });
             },

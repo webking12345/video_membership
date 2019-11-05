@@ -23,7 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'https://elite-345.000webhostapp.com/';
 $config['base_url'] = 'http://localhost:81';
 
 /*
@@ -36,7 +35,7 @@ $config['base_url'] = 'http://localhost:81';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,3 +521,7 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+$config['stripe_key'] = 'pk_test_QtUJR12vQ3P2Doby1elqKGzQ0090JaMBiN';
+$config['stripe_secret'] = 'sk_test_XBbrBXAObMqk4IsbkG9a5m1U005M8oTrDb';

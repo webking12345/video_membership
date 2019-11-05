@@ -13,6 +13,12 @@ class MembershipLevel_model extends MY_Model {
 		parent::__construct();
 	}
 	
+	function getDataByDuration(){
+		$this->db->order_by('timeline', 'ASC');
+		$query = $this->db->get($this->table);
+
+		return $query->result();
+	}
 }
 
 /* End of file MembershipLevel_model.php */

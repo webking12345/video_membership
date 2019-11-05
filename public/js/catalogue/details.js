@@ -33,7 +33,7 @@ $(document).ready(function(){
     }
 
     $("#view").click(function(){
-        if(is_member > 0)
+        if(is_member > 0 || is_purchased > 0)
         {
             return true
         } else {
@@ -44,6 +44,51 @@ $(document).ready(function(){
     });
 
     $("#pay2play").click(function(){
-        alert("Comming soon!!!")
+        // send contents data to server as temp data
+        let flgSent = false;
+
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            dataType: "json",
+            url: base_url + 'tempData/storeTempData',
+            data: {content_id : content_id, table : "purchase_contents"},
+            async: false,
+            success: function(response) {
+                if(response==1)
+                {
+                    flgSent = true
+                } else {
+                    alert('Server error. \n Please try again.')
+                }
+            },
+            error: function() {}
+        });
+        /////
+        if(!flgSent)
+        {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        //checkout
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: base_url + 'checkout/stripe/setSess',
+            data: { description:  "Purchase content" + content_title , amount : content_price, redirect_url : "media/contents_view/" + content_id},
+            async: false,
+            success: function(response) {
+                if(response==1)
+                {
+                    location.href = base_url + 'checkout/stripe'
+                } else {
+                    alert('Server error. \n Please try again.')
+                }
+            },
+            error: function() {}
+        });
+        /////
     })
 });

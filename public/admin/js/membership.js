@@ -197,6 +197,7 @@ jQuery(document).ready(function($) {
     
     $("#new_level").click(function(){
         $(".modal-title").text('Add Level');
+        $("#edit_id").val(0)
         $("#m_frm").trigger("reset");
     })
 });

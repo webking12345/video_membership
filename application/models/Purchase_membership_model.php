@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Membership Data Model Class
+ * Purchase Membership Model Class
  * author  Elite M
  */
-class MembershipData_model extends MY_model {
+class Purchase_membership_model extends MY_model {
 	
-	protected  $table = 'membership_data';
+	protected  $table = 'purchase_membership';
 	
     function __construct()
 	{
@@ -21,17 +21,17 @@ class MembershipData_model extends MY_model {
 	 *  $userId != null : get data by user id
 	 */
 	function getData($membershipId=null, $userId=null){
-		$sql = "SELECT membership_data.*, users.`name`, membership_level.`level_name`, membership_level.`price` FROM membership_data 
-		LEFT JOIN users ON membership_data.user_id = users.id
-		LEFT JOIN membership_level ON membership_data.membership_id = membership_level.id";
+		$sql = "SELECT " . $this->table . ".*, users.`name`, membership_level.`level_name`, membership_level.`price` FROM " . $this->table . " 
+		LEFT JOIN users ON " . $this->table . ".user_id = users.id
+		LEFT JOIN membership_level ON " . $this->table . ".membership_id = membership_level.id";
 		$flag = 0;
 		if(!is_null($membershipId)){
 			$flag = 1;
-			$sql .=" WHERE membership_data.membership_id=".(int)$membershipId;
+			$sql .=" WHERE " . $this->table . ".membership_id=".(int)$membershipId;
 		}
 		if(!is_null($userId)){
 			$sql .= $flag ? " AND " : " WHERE ";
-			$sql .="membership_data.user_id=".(int)$userId;
+			$sql .= $this->table . ".user_id=".(int)$userId;
 		}
 		$query = $this->db->query($sql);
 		if(is_null($query->result())){
@@ -107,5 +107,5 @@ class MembershipData_model extends MY_model {
 	}
 }
 
-/* End of file MembershipData_model.php */
-/* Location: ./application/models/MembershipData_model.php */
+/* End of file Purchase_membership_model.php */
+/* Location: ./application/models/Purchase_membership_model.php */

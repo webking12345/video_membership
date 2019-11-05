@@ -15,7 +15,7 @@ class History_model extends MY_model {
 		$this->load->library('session');
 	}
 
-	function addHistory($user_id='', $action, $description='', $user_ip=''){
+	function addHistory($user_id = 0, $action, $description='', $user_ip=''){
 		$data=array(
 			"user_id" => $user_id,
 			"action" => $action,

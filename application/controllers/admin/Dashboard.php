@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('users_model');		
 		$this->load->model('contents_model');		
+		$this->load->model('setting_model');		
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 
@@ -33,7 +34,15 @@ class Dashboard extends CI_Controller {
 			show_404();
 		}
 
+		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
+		$data['email'] = $user_data->email;
 
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
+		
 		$data["user"] = $this->session->userdata('user');
 		
 		$data['page']='Dashboard';

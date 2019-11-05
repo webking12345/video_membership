@@ -13,6 +13,7 @@ class Contents extends CI_Controller {
 		$this->load->model('contents_model');
 		$this->load->model('category_model');
 		$this->load->model('users_model');
+		$this->load->model('setting_model');
 		$this->load->helper('url_helper');
 		$this->load->library('session');
 
@@ -38,6 +39,15 @@ class Contents extends CI_Controller {
 
 		$categories = $this->category_model->getAllData();
 		$data['categories']=$categories;
+
+		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
+		$data['email'] = $user_data->email;
+
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
 
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/sidebar', $data);
@@ -75,6 +85,7 @@ class Contents extends CI_Controller {
 				'category'=>$content->category_id,
 				'title'=>$content->title,
 				'description'=>$content->description,
+				'description2'=>$content->description2,
 				'duration'=>$content->duration,
 				'price'=>$content->price,
 				'size'=>$size.$unit,
@@ -104,6 +115,7 @@ class Contents extends CI_Controller {
 				'thumb_url'=>$thumb_url,
 				'category_id'=>$_POST['category'],
 				'description'=>$_POST['description'],
+				'description2'=>$_POST['description2'],
 				'price'=>$_POST['price'],
 				'duration'=>$duration,
 				'size'=>$size
@@ -146,6 +158,7 @@ class Contents extends CI_Controller {
 				'thumb_url'=>$thumb_file,
 				'category_id'=>$_POST['category'],
 				'description'=>$_POST['description'],
+				'description2'=>$_POST['description2'],
 				'price'=>$_POST['price'],
 				'duration'=>$_POST['type']==1?$FileInfo['playtime_string']:count_pages($source_file),
 				'size'=>$_FILES['source_file']['size']

@@ -62,7 +62,7 @@
 						<!--End::Section-->
 
 						<!--Begin::Section-->
-						<div class="m-portlet m-portlet--mobile">
+						<!-- <div class="m-portlet m-portlet--mobile">
 							<div class="m-portlet__head">
 								<div class="m-portlet__head-caption">
 									<div class="m-portlet__head-title">
@@ -74,7 +74,7 @@
 							</div>
 							<div class="m-portlet__body">
 
-								<!--begin: Datatable -->
+								begin: Datatable 
 								<table class="table table-striped- table-bordered table-hover table-checkable" id="tbl_membership">
 									<thead>
 										<tr>
@@ -105,7 +105,7 @@
 									</tbody>
 								</table>
 							</div>
-						</div>
+						</div> -->
 						<!--End::Section-->
 					</div>
 				</div>
