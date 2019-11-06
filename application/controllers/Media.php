@@ -62,6 +62,8 @@ class Media extends CI_Controller {
 		}
 
 		$data['resource'] = 'media';
+		$data['page'] = 'View';
+
 		//get content by content id
 		$data['view'] = 'contents';
 		$content_data = $this->contents_model->getOneContent($content_id);
@@ -117,6 +119,8 @@ class Media extends CI_Controller {
 		
 		$data['view']="category";
 		$data['resource'] = 'media';
+		$data['page'] = 'View';
+
 		//get content by content id
 		$cate_data = $this->category_model->getOneCategory($category_id);
 		$data['thumb_url']=substr($cate_data->thumb_url,0,6)=="public"?base_url().$cate_data->thumb_url:$cate_data->thumb_url;

@@ -1,15 +1,6 @@
 let plan_id = 0;
 
 $(document).ready(function() {
-    //currency converter
-    $("#currency").change(function() {
-        var sign = $(this).val();
-        $(".plan").find(".currency").each(function() {
-            $(this).html("");
-            $(this).html(sign);
-        });
-    });
-
     $("#indicator").propeller({
         inertia: 0,
         angle:288,
@@ -125,6 +116,14 @@ $(document).ready(function() {
                 return false;
             /////
 
+            //clear TempData
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: base_url + 'tempData/clearTemp',
+                async: false,
+            });
+
             // send user data to server as temp data
             let flgSent = false;
 
@@ -153,7 +152,7 @@ $(document).ready(function() {
                 return false;
             }
         }
-        console.log("Asd");
+    
         //if membership level is 0, return false
         if($("#membership_amount").val() * 1 <= 0)
         {

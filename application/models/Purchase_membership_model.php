@@ -21,7 +21,7 @@ class Purchase_membership_model extends MY_model {
 	 *  $userId != null : get data by user id
 	 */
 	function getData($membershipId=null, $userId=null){
-		$sql = "SELECT " . $this->table . ".*, users.`name`, membership_level.`level_name`, membership_level.`price` FROM " . $this->table . " 
+		$sql = "SELECT " . $this->table . ".*, users.`username`, membership_level.id as membership_id, membership_level.`level_name`, membership_level.`price` FROM " . $this->table . " 
 		LEFT JOIN users ON " . $this->table . ".user_id = users.id
 		LEFT JOIN membership_level ON " . $this->table . ".membership_id = membership_level.id";
 		$flag = 0;
@@ -77,14 +77,8 @@ class Purchase_membership_model extends MY_model {
 		$this->db->where('user_id', $user_id);					
 		$query = $this->db->get($this->table);
 
-		//get server date
-		$sql="SELECT CURRENT_DATE AS now";
-		$result=$this->db->query($sql);
-		$date=$result->row();
-		$now = $date->now;
-
 		if($query->num_rows())
-			return $now <= $this->caculateUserMembershipEndDate($user_id);
+			return true;
 		else
 			return false;
 	}
@@ -104,6 +98,19 @@ class Purchase_membership_model extends MY_model {
 		$end = $start + (3600*24*$user_data->timeline);
 
 		return date('Y-m-d', $end);
+	}
+
+	function remainDays($user_id){
+		//get server date
+		$sql="SELECT CURRENT_DATE AS now";
+		$result=$this->db->query($sql);
+		$date=$result->row();
+		$now = $date->now;
+
+		$diff = abs(strtotime($this->caculateUserMembershipEndDate($user_id)) - strtotime($now));
+
+		$days = floor($diff / (60*60*24));
+		return $days;
 	}
 }
 

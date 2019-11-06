@@ -56,7 +56,9 @@ class Catalogue extends CI_Controller {
 			$data['copyright'] = $setting_data[0]->copyright;
 		}
 
-		$data['resource'] = 'catalogue/catalogue';		
+		$data['resource'] = 'catalogue/catalogue';
+		$data['page'] = 'Catalogue';
+			
 		//get parent category
 		$categories = $this->category_model->getAllData();
 		$data['categories'] = $categories;
@@ -121,6 +123,8 @@ class Catalogue extends CI_Controller {
 		}
 		
 		$data['resource'] = 'catalogue/details';
+		$data['page'] = 'Content Detail';
+		
 		//get content by content id
 		$this->getContents($content_id);
 		$data['content']=$this->contents[0];

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row site-title mt-4 mb-3">
             <div class="col-sm-12">
-                <div class=" text-center text-secondary ft-16"><?php echo isset($copyright) ? $copyright : 'Copyright@2019 Lifestyle.com' ; ?></div>
+                <div class=" text-center text-secondary ft-16"><?php echo isset($copyright) ? $copyright : '' ; ?></div>
             </div>
         </div>
     </div>

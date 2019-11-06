@@ -40,6 +40,7 @@ class Auth extends CI_Controller {
 			redirect("catalogue");
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'auth';
+		$data["page"] = "Login";
 
 		$setting_data=$this->setting_model->get_all();
 		if(count($setting_data) > 0){
@@ -59,7 +60,8 @@ class Auth extends CI_Controller {
 			redirect("catalogue");
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'auth';
-		
+		$data["page"] = "Register";
+
 		$setting_data=$this->setting_model->get_all();
 		if(count($setting_data) > 0){
 			$data['title'] = $setting_data[0]->site_title;

@@ -18,7 +18,7 @@
                                     </div>';
                         }
                 ?>
-                <iframe class="pdf-viewer-container" src="<?php echo $pdf_url; ?>" style="height"></iframe>
+                <iframe id="player" class="pdf-viewer-container" src="<?php echo $pdf_url; ?>#toolbar=0&navpanes=0&scrollbar=0" style="height"></iframe>
                 <div class="row mt-2">
                     <?php 
                         if($view == "contents"){

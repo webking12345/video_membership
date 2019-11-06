@@ -79,7 +79,7 @@ body {
                                     <label for="cardNumber" class="font-color-light-blue mb-0 font-color-gray">card
                                         number</label>
                                     <input type="tel"
-                                        class="form-control <?php echo $theme ? "brightly" : "darkly" ?>-form-control"
+                                        class="form-control focus <?php echo $theme ? "brightly" : "darkly" ?>-form-control"
                                         name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number"
                                         required autofocus />
                                 </div>

@@ -25,16 +25,31 @@ class Profile extends CI_Controller {
 
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'profile';
+		$data['page'] = 'Profile';
 
+		$setting_data=$this->setting_model->get_all();
+		if(count($setting_data) > 0){
+			$data['title'] = $setting_data[0]->site_title;
+			$data['copyright'] = $setting_data[0]->copyright;
+		}
+		
 		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
 		$data["isLoggedIn"]=true;
 		$data["username"]=$user_data->username;
 		$data["email"]=$user_data->email;
 
-		$is_member = $this->purchase_membership_model->isMember($this->session->userdata("user_id"));
-		
-		$data["is_member"]=$is_member;
-		$data["membership_end_date"]=$is_member?$this->purchase_membership_model->caculateUserMembershipEndDate($this->session->userdata("user_id")):'';
+		$data["is_member"] = $this->purchase_membership_model->isMember($this->session->userdata("user_id"));;
+		if($data["is_member"])
+		{
+			$data["remain_days"] = $this->purchase_membership_model->remainDays($this->session->userdata("user_id"));
+			$data["is_expired"] = $data["remain_days"]==0;
+
+			$current_membership_data = $this->purchase_membership_model->getData(null, $this->session->userdata("user_id"));
+			$data['current_membership'] = $current_membership_data[0];
+		}
+
+		$levels= $this->membershiplevel_model->getDataByDuration();
+		$data['level'] = $levels;
 
 		$data["default_pwd"]=self::$default_pwd;
 		$data["role"]=$user_data->role;
@@ -48,6 +63,7 @@ class Profile extends CI_Controller {
 	{
 		$data['theme'] = $this->session->userdata("theme")?1:0;
 		$data["resource"] = 'join';
+		$data['page'] = 'Join';
 
 		//get features data
 		// $features = $this->feature_model->get_all();

@@ -20,7 +20,6 @@ class TempData extends CI_Controller {
 
 	public function index()
 	{
-		$this->session->unset_userdata('tmp');
 		show_404();
 	}
 
@@ -65,7 +64,7 @@ class TempData extends CI_Controller {
 			if($tmp['table'] == "purchase_membership")
 			{
 				$new_data['user_id'] = $this->session->userdata("isLoggedIn") ? $this->session->userdata("user_id") : $user_id;
-				$this->purchase_membership_model->insert($new_data);
+				$this->purchase_membership_model->saveData($new_data['user_id'], $new_data['membership_id']);
 				$this->history_model->addHistory($new_data['user_id'], 5, 'purchase membership', $this->input->ip_address()); // 2nd prams -> 1: register, 2: login, 3:logout, 4: visit page, 5: join membership, 6: purchase contents
 			}
 
@@ -83,6 +82,11 @@ class TempData extends CI_Controller {
 		$this->session->unset_userdata('redirect_url');
 
 		redirect($redirect_url, 'refresh');
+	}
+
+	public function clearTemp(){
+		$this->session->unset_userdata('tmp');
+		echo true;
 	}
 }
 

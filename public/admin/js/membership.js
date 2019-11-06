@@ -13,16 +13,14 @@ var DatatablesDataSourceHtml = function() {
 			columnDefs: [
 				{
 					targets: -1,
-					title: 'actions',
+					title: 'Actions',
 					orderable: false,
 					render: function(data, type, full, meta) {
 						return `
                         <a href="#" class="edit btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="modal"  data-target="#m_modal" aria-expanded="true" title="Edit">
                             <i class="la la-edit"></i>
                         </a>
-                        <a href="#" class="delete m-portlet__nav-link btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
-                          <i class="la la-remove"></i>
-                        </a>`;
+                        `;
 					},
                 },
 			],
@@ -196,6 +194,12 @@ jQuery(document).ready(function($) {
     });
     
     $("#new_level").click(function(){
+        if($('#tbl_levels').DataTable().rows().count())
+        {
+            alert("Membership levels have been limited!")
+            return false;
+        }
+
         $(".modal-title").text('Add Level');
         $("#edit_id").val(0)
         $("#m_frm").trigger("reset");

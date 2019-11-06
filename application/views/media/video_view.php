@@ -23,7 +23,7 @@
                         <source src="<?php echo $video_url; ?>" type="video/mp4">            
                     </video>
                 <?php } else { ?>
-                    <iframe src="<?php echo $video_url; ?>" class="player-container" frameborder="0"></iframe>
+                    <iframe id="player" src="<?php echo $video_url; ?>" class="player-container" frameborder="0"></iframe>
                 <?php } ?>
 
                 <div class="row mt-3">

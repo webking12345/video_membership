@@ -46,7 +46,8 @@ class Stripe extends CI_Controller {
 			$data['title'] = $setting_data[0]->site_title;
 			$data['copyright'] = $setting_data[0]->copyright;
 			$data['welcome_text'] = $setting_data[0]->welcome_text;
-		}
+        }
+		$data["page"] = "Checkout";
 		$data["resource"]='checkout/stripe';
 		$data['publish_key'] = $this->config->item('stripe_key');
 		$data['amount'] = $this->session->userdata('checkout_amount');

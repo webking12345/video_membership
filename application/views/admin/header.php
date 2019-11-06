@@ -4,7 +4,7 @@
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title><?php echo isset($title) ? $title : 'Lifestyle'; ?> | <?php echo $page; ?></title>
+		<title><?php echo isset($title) ? $title : ''; ?> | <?php echo $page; ?></title>
 		<meta name="description" content="Latest updates and statistic charts">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 

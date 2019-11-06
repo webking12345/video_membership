@@ -61,6 +61,7 @@ class Home extends CI_Controller {
 		$all_category = $this->category_model->getData();
 		$data['all_category'] = $all_category;
 		$data['resource']='home';
+		$data['page'] = 'Home';
 		
 		$this->load->view('header',$data);
 		$this->load->view('home',$data);

@@ -13,7 +13,7 @@
                   <label for="username" class="font-color-light-blue mb-0 font-color-gray">name</label>
                   <div class="input-icons"> 
                     <i class="m-auto fa fa-user icon"></i> 
-                      <input id="username" name="username" type="text" required class="form-control <?php echo $theme ? "brightly" : "darkly" ?>-form-control" autofocus> 
+                      <input id="username" name="username" type="text" required class="form-control <?php echo $theme ? "brightly" : "darkly" ?>-form-control focus" autofocus> 
                   </div>                  
                 </div>
                 <div class="form-group mb-1">
@@ -27,11 +27,6 @@
                 <div class="form-group mb-1 mt-3">
                   <button id="btn_submit" type="submit" class="pl-5 pr-5 <?php echo $theme ? "brightly-btn" : "dark-purple-button"; ?>" data-view="login">login</button>
                 </div>                           
-
-                <div class="join-now-btn mt-5">
-                  <a href="<?php echo base_url();?>profile/join"><button type="button" class="<?php echo $theme ? "brightly-btn" : "dark-purple-button"; ?> w-100" >join us!</button></a>
-                </div>
-
               </div>
               <div class="col-sm-6 ml-auto mr-auto">
                 <div id="reg-description" class="reg-description row h-100">
