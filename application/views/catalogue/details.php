@@ -75,7 +75,7 @@
 
                     </div>
                     <div class="col-sm-7 service ml-3 mr-3">
-                        <div class="font-color-light-blue p-2">
+                        <div class="font-color-light-blue p-2 messages">
                             <?php echo nl2br($content->description2); ?>
                         </div>
                         <div class=""></div>

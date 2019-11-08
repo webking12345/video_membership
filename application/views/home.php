@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row mt-4">
                     <div class="col-sm-12 header-quote ">
-                        <h1 class="title font-color-light-blue mb-0 mt-0">
+                        <h1 class="welcome-title font-color-light-blue mb-0 mt-0">
                             Welcome to <?php echo isset($title) ? $title : '';?>
                         </h1>
                         <div class="content text-secondary ft-16 mt-3">

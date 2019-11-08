@@ -2,7 +2,7 @@
                     <div class="row membership-part font-color-light-blue mt-4">
                         <div class="col-sm-6 ml-auto mr-auto">
                             <div class="membership">
-                                <h3 class="text-center mb-3">Choose your best option:</h3>
+                                <h3 class="text-center mb-3 membership-title">Choose your best option:</h3>
                                 <div class="row">
                                     <div class="col-lg-12 membership-indicator-container" style="display:flex; overflow:hidden; align-items:flex-end; background:url('<?php echo base_url(); ?>public/images/fuel-background.png')  no-repeat; background-size:contain; background-position: center !important">
                                         <img id="indicator" src="<?php echo base_url(); ?>public/images/fuel-indicator-1.png" style="display:block; margin-left:auto; margin-right:auto;" class="membership-indicator" alt="">
@@ -27,13 +27,13 @@
                                     if(sizeof($level) > 0){
                                         foreach($level as $key=>$l){
                                             $str .= '<div class="plan d-none" data-id="'.$key.'" >';
-                                            $str .= '<h3 class="title mt-5 mb-3">'.$l->level_name.'</h3>';
-                                            $str .= '<div class="price mb-3">';
-                                            $str .= '<span class="currency">$</span>';
-                                            $str .= '<span class="amount">'.$l->price.'</span>';
+                                            $str .= '<h3 class="membership-title mt-5 mb-2">'.$l->level_name.'</h3>';
+                                            $str .= '<div class="membership-title price mb-2">';
+                                            $str .= '<span class="membership-title currency">$</span>';
+                                            $str .= '<span class="membership-title amount">'.$l->price.'</span>';
                                             $str .= '<span class="end">/'.$l->timeline.'</span>';
                                             $str .= '</div>';
-                                            $str .= '<div class="description mb-3">';
+                                            $str .= '<div class="message mb-3">';
                                             $str .= $l->description;
                                             $str .='</div></div>';
                                         }

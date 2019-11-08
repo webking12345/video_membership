@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2019 at 05:00 PM
+-- Generation Time: Nov 08, 2019 at 02:46 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -35,6 +35,15 @@ CREATE TABLE `balance_history` (
   `in_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `in_description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `balance_history`
+--
+
+INSERT INTO `balance_history` (`id`, `user_email`, `in_amount`, `in_date`, `in_description`) VALUES
+(1, 'test@tesat.com', 15, '2019-11-07 05:48:24', 'Purchase weekly membership'),
+(2, 'test@tesat.com', 50, '2019-11-07 05:52:52', 'Purchase montly membership'),
+(3, 'test@tesat.com', 100, '2019-11-07 05:57:23', 'Purchase yearly membership');
 
 -- --------------------------------------------------------
 
@@ -215,7 +224,101 @@ INSERT INTO `history` (`id`, `user_id`, `action`, `description`, `user_ip`, `dat
 (52, 8, 4, 'PlayTest', '::1', '2019-11-06 01:22:30'),
 (53, 8, 3, 'logout', '::1', '2019-11-06 01:22:43'),
 (54, 0, 4, 'visit home page', '::1', '2019-11-06 01:22:43'),
-(55, 1, 2, 'login', '::1', '2019-11-06 01:22:48');
+(55, 1, 2, 'login', '::1', '2019-11-06 01:22:48'),
+(56, 1, 4, 'visit home page', '::1', '2019-11-06 02:36:13'),
+(57, 1, 4, 'PlayTest PDF', '::1', '2019-11-06 02:36:36'),
+(58, 1, 3, 'logout', '::1', '2019-11-06 02:36:49'),
+(59, 0, 4, 'visit home page', '::1', '2019-11-06 02:36:49'),
+(60, 8, 2, 'login', '::1', '2019-11-06 02:36:58'),
+(61, NULL, 3, 'logout', '::1', '2019-11-06 05:03:09'),
+(62, 0, 4, 'visit home page', '::1', '2019-11-06 05:03:09'),
+(63, 8, 2, 'login', '::1', '2019-11-06 05:13:30'),
+(64, 8, 3, 'logout', '::1', '2019-11-06 05:16:10'),
+(65, 0, 4, 'visit home page', '::1', '2019-11-06 05:16:10'),
+(66, 1, 2, 'login', '::1', '2019-11-06 05:16:14'),
+(67, 1, 4, 'PlayTest', '::1', '2019-11-06 05:16:19'),
+(68, 1, 4, 'PlayRogue One Trailer', '::1', '2019-11-06 05:18:01'),
+(69, 1, 4, 'PlayTest PDF', '::1', '2019-11-06 05:18:13'),
+(70, 1, 4, 'PlayTest PDF', '::1', '2019-11-06 05:19:36'),
+(71, 1, 4, 'visit home page', '::1', '2019-11-06 05:24:15'),
+(72, 1, 4, 'PlayYoutube test1', '::1', '2019-11-06 05:34:04'),
+(73, 1, 4, 'PlayYoutube test1', '::1', '2019-11-06 05:34:36'),
+(74, 1, 4, 'visit home page', '::1', '2019-11-06 05:45:16'),
+(75, 0, 4, 'visit home page', '::1', '2019-11-06 10:43:59'),
+(76, 0, 4, 'visit home page', '::1', '2019-11-06 12:12:41'),
+(77, 8, 2, 'login', '::1', '2019-11-06 12:17:44'),
+(78, 8, 4, 'visit home page', '::1', '2019-11-06 12:44:43'),
+(79, 8, 4, 'visit home page', '::1', '2019-11-06 12:46:11'),
+(80, 8, 3, 'logout', '::1', '2019-11-06 12:49:01'),
+(81, 0, 4, 'visit home page', '::1', '2019-11-06 12:49:01'),
+(82, 8, 2, 'login', '::1', '2019-11-06 12:49:16'),
+(83, 8, 5, 'purchase membership', '::1', '2019-11-06 12:51:11'),
+(84, 8, 5, 'purchase membership', '::1', '2019-11-06 12:51:11'),
+(85, 8, 5, 'purchase membership', '::1', '2019-11-06 12:51:11'),
+(86, 8, 5, 'purchase membership', '::1', '2019-11-06 12:51:11'),
+(87, 8, 5, 'purchase membership', '::1', '2019-11-06 13:04:07'),
+(88, 8, 2, 'login', '::1', '2019-11-06 19:18:20'),
+(89, 8, 3, 'logout', '::1', '2019-11-06 19:21:32'),
+(90, 0, 4, 'visit home page', '::1', '2019-11-06 19:21:32'),
+(91, 1, 2, 'login', '::1', '2019-11-06 19:21:37'),
+(92, 0, 4, 'visit home page', '::1', '2019-11-06 19:22:23'),
+(93, 1, 3, 'logout', '::1', '2019-11-06 19:33:49'),
+(94, 0, 4, 'visit home page', '::1', '2019-11-06 19:33:50'),
+(95, 8, 2, 'login', '::1', '2019-11-06 19:50:22'),
+(96, 8, 4, 'PlayTest', '::1', '2019-11-06 20:15:14'),
+(97, 8, 4, 'PlayTest', '::1', '2019-11-06 20:17:03'),
+(98, 8, 4, 'PlayTest', '::1', '2019-11-06 20:18:03'),
+(99, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 20:18:30'),
+(100, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 21:55:42'),
+(101, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 21:56:25'),
+(102, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:00:26'),
+(103, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:00:57'),
+(104, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:02:21'),
+(105, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:02:23'),
+(106, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:02:47'),
+(107, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:02:49'),
+(108, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:03:29'),
+(109, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:07:59'),
+(110, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:08:18'),
+(111, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:08:32'),
+(112, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:08:36'),
+(113, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:13:34'),
+(114, 8, 4, 'visit home page', '::1', '2019-11-06 22:13:35'),
+(115, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:17:25'),
+(116, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:21:36'),
+(117, 8, 4, 'PlayTest PDF', '::1', '2019-11-06 22:21:59'),
+(118, 8, 2, 'login', '::1', '2019-11-07 02:46:15'),
+(119, 8, 3, 'logout', '::1', '2019-11-07 03:20:45'),
+(120, 0, 4, 'visit home page', '::1', '2019-11-07 03:20:45'),
+(121, 8, 2, 'login', '::1', '2019-11-07 03:21:05'),
+(122, 8, 5, 'purchase membership', '::1', '2019-11-07 04:54:34'),
+(123, 8, 5, 'purchase membership', '::1', '2019-11-07 05:10:22'),
+(124, 8, 5, 'purchase membership', '::1', '2019-11-07 05:42:31'),
+(125, 8, 5, 'purchase membership', '::1', '2019-11-07 05:43:28'),
+(126, 8, 5, 'purchase membership', '::1', '2019-11-07 05:44:33'),
+(127, 8, 5, 'purchase membership', '::1', '2019-11-07 05:45:55'),
+(128, 8, 5, 'purchase membership', '::1', '2019-11-07 05:48:25'),
+(129, 8, 5, 'purchase membership', '::1', '2019-11-07 05:52:53'),
+(130, 8, 5, 'purchase membership', '::1', '2019-11-07 05:57:32'),
+(131, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 05:58:47'),
+(132, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:04:01'),
+(133, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:04:11'),
+(134, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:04:15'),
+(135, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:04:48'),
+(136, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:04:55'),
+(137, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:05:00'),
+(138, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:05:06'),
+(139, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:06:59'),
+(140, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:07:05'),
+(141, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:07:39'),
+(142, 8, 4, 'PlayTest PDF', '::1', '2019-11-07 06:07:54'),
+(143, 8, 3, 'logout', '::1', '2019-11-07 06:08:48'),
+(144, 0, 4, 'visit home page', '::1', '2019-11-07 06:08:48'),
+(145, 0, 4, 'visit home page', '::1', '2019-11-07 06:21:50'),
+(146, 0, 4, 'visit home page', '::1', '2019-11-07 06:22:05'),
+(147, 0, 4, 'visit home page', '::1', '2019-11-07 06:22:12'),
+(148, 0, 4, 'visit home page', '::1', '2019-11-07 06:22:16'),
+(149, 0, 4, 'visit home page', '::1', '2019-11-08 01:56:17');
 
 -- --------------------------------------------------------
 
@@ -283,6 +386,13 @@ CREATE TABLE `purchase_membership` (
   `user_id` int(11) NOT NULL COMMENT 'user_id',
   `purchase_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'membership purchase date'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `purchase_membership`
+--
+
+INSERT INTO `purchase_membership` (`id`, `membership_id`, `user_id`, `purchase_date`) VALUES
+(1, 4, 8, '2019-11-07 05:57:32');
 
 -- --------------------------------------------------------
 
@@ -423,7 +533,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `balance_history`
 --
 ALTER TABLE `balance_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -447,7 +557,7 @@ ALTER TABLE `feature_list`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT for table `membership_level`
@@ -471,7 +581,7 @@ ALTER TABLE `purchase_contents`
 -- AUTO_INCREMENT for table `purchase_membership`
 --
 ALTER TABLE `purchase_membership`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `setting`

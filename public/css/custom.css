@@ -41,3 +41,25 @@
 pre {
     font-family: helvetica, sans-serif, monospace;
 }
+
+.welcome-title{
+    font-size:40px;
+}
+.messages{
+    font-size:22px;
+}
+.membership-title{
+    font-size:32px;
+}
+
+@media screen and (max-width: 479px) {
+    .welcome-title{
+        font-size:30px;
+    }
+    .messages{
+        font-size:18px;
+    }
+    .membership-title{
+        font-size:26px;
+    }
+}

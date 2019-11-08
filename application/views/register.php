@@ -54,7 +54,7 @@
             </div>
             <div class="row mt-4">
               <div class="col-sm-12">
-                <div class="membership-ad p-2">
+                <div class="messages membership-ad p-2">
                   <?php echo isset($description2) ? nl2br($description2) : '' ; ?>
                 </div>
               </div>
