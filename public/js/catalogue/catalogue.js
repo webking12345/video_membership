@@ -92,7 +92,7 @@ $(document).ready(function(){
                             '<div class="catalog-item" style="height:200px; background: url(', content['thumb_url'].substr(0,6)=="public" ? (base_url + content['thumb_url']) : content['thumb_url'], ') no-repeat; background-size:cover">',
                                 '<div class="overlay">',
                                     '<div class="background">',
-                                        '<div class="font-color-light-blue pt-5">', content['title'], '</div>',
+                                        '<div class="font-color-light-blue pt-5">', (content['title'].length > 80 ? (content['title'].substr(0,80) + "...") : content['title']), '</div>',
                                         '<div class="font-color-light-blue" >', content['category_name'], '</div>',
                                         '<a href="', base_url, 'catalogue/details/', content['id'], '"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto ', theme?"brightly-btn" : "dark-purple-button", '">view details</div></a>',
                                     '</div>',

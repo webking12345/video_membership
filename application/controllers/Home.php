@@ -13,6 +13,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('users_model');
 		$this->load->model('category_model');
+		$this->load->model('introduction_model');
 		$this->load->model('history_model');
 		$this->load->model('setting_model');
 		$this->load->helper('url_helper');
@@ -60,6 +61,18 @@ class Home extends CI_Controller {
 
 		$all_category = $this->category_model->getData();
 		$data['all_category'] = $all_category;
+		$introductions = $this->introduction_model->getContents();
+		if($introductions){
+			foreach($introductions as $row){
+				$intro[$row['category_id']] = $row;
+			}
+		}
+		$data['thumb_url']=substr($introductions[0]['thumb_url'],0,6)=="public"?base_url().$introductions[0]['thumb_url']:$introductions[0]['thumb_url'];
+		$data['video_url']=substr($introductions[0]['contents_url'],0,6)=="public"?base_url().$introductions[0]['contents_url']:$introductions[0]['contents_url'];
+		$domain = str_replace('www.', '', parse_url($introductions[0]['contents_url'], PHP_URL_HOST));
+		$data['is_youtube'] = $domain=='youtube.com' || $domain=='youtu.be' ? true : false;
+
+		$data['intro'] = $intro;
 		$data['resource']='home';
 		$data['page'] = 'Home';
 		

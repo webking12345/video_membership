@@ -27,8 +27,8 @@
                                             $str .='<a  data-easing="easeInQuad"><button data-type="video-cat" class="parent-category '.$t.'" ';
                                             $str .=' data-id="'.$row->id.'"';
                                             $str .=' data-class="'.$row->class.'" ';
-                                            $str .=' data-src="'.$row->video_url.'" ';
-                                            $str .=' data-poster="'.$row->thumb_url.'" >';
+                                            $str .=' data-src="'.$intro[$row->id]['contents_url'].'" ';
+                                            $str .=' data-poster="'.$intro[$row->id]['thumb_url'].'" >';
                                             $str .= $row->name.'</button></a>';
                                             $str .= '</li>';
                                     }
@@ -44,11 +44,15 @@
         <section id="video">
             <!-- intro video start -->
             <div class="container" style="margin-top:35px">
-                <div class="video-container">
-                    <video controls crossorigin playsinline poster="<?php echo base_url() ?>public/images/video-thumbnail/Welcome_HD.jpg">
-                        <source src="https://www.radiantmediaplayer.com/media/bbb-360p.mp4" type="video/mp4" width="640" height="380" >            
-                    </video>    
-                </div>
+                <?php if(!$is_youtube) { ?>
+                    <div class="video-container">
+                        <video controls crossorigin playsinline poster="<?php echo $thumb_url; ?>" class="video-container" style="visibility:hidden">
+                            <source src="<?php echo $video_url; ?>" type="video/mp4">            
+                        </video>
+                    </div>
+                <?php } else { ?>
+                    <iframe id="player" src="<?php echo $video_url; ?>"  class="video-container" frameborder="0" style="width:100%; height:auto; display:block"></iframe>
+                <?php } ?>  
             </div>
         </section>
     </div>

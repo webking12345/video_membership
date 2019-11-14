@@ -100,6 +100,7 @@ video {
     margin: 5px auto;
     max-width: 640px;
     max-height: 380px;
+    min-height: 300px;
     /*max-width: 1090px;*/
 }
 

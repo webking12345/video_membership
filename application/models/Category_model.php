@@ -130,7 +130,6 @@ class Category_model extends MY_Model {
 		$sql='SELECT COUNT(*) as count FROM '.$this->table.' WHERE `class` LIKE "'.$class.'.%"';
 		$result=$this->db->query($sql);
 		$count=$result->row()->count;
-		var_dump($sql);
 		if($count==0)
 			$sql='UPDATE '.$this->table.' SET is_leaf=1 WHERE class="'.$class.'"';
 		else

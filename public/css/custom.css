@@ -1,65 +1,69 @@
-.player-container{
-    width:100%;
+.player-container {
+    width: 100%;
     height: 500px !important;
-    border:0;
+    border: 0;
 }
 
-.pdf-viewer-container{
-    width:100%;
+.pdf-viewer-container {
+    width: 100%;
     height: 680px !important;
-    border:0;
+    border: 0;
 }
 
-.membership-indicator-container{
+.membership-indicator-container {
     min-height: 300px;
 }
-.membership-indicator{
+
+.membership-indicator {
     height: 350px;
-    margin-bottom:-130px;
+    margin-bottom: -130px;
 }
+
 @media screen and (max-width: 479px) {
     /* start of phone styles */
     .player-container {
         height: 300px !important;
     }
-    .pdf-viewer-container{
+    .pdf-viewer-container {
         height: 300px !important;
     }
-    .membership-indicator-container{
+    .membership-indicator-container {
         min-height: 200px;
     }
-    .membership-indicator{
+    .membership-indicator {
         height: 200px;
-        margin-bottom:-65px;
+        margin-bottom: -65px;
     }
 }
 
-.container{
-    padding:0 !important;
+.container {
+    padding: 0 !important;
 }
 
 pre {
     font-family: helvetica, sans-serif, monospace;
 }
 
-.welcome-title{
-    font-size:40px;
+.welcome-title {
+    font-size: 40px;
 }
-.messages{
-    font-size:22px;
+
+.messages {
+    font-size: 20px;
 }
-.membership-title{
-    font-size:32px;
+
+.membership-title {
+    font-size: 32px;
 }
 
 @media screen and (max-width: 479px) {
-    .welcome-title{
-        font-size:30px;
+    .welcome-title {
+        font-size: 30px;
     }
-    .messages{
-        font-size:18px;
+    .messages {
+        font-size: 15px;
     }
-    .membership-title{
-        font-size:26px;
+    .membership-title {
+        font-size: 26px;
     }
 }

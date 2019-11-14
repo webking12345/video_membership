@@ -38,7 +38,11 @@ class Contents extends CI_Controller {
 		$data['resource'] = "contents";
 
 		$categories = $this->category_model->getAllData();
-		$data['categories']=$categories;
+		$cate_data = array();
+		foreach ($categories as $cate) {
+			$cate_data[$cate->id] = $cate;
+		}
+		$data['categories'] =$cate_data;
 
 		$user_data=$this->users_model->getUserData('',$this->session->userdata("user_id"));
 		$data['email'] = $user_data->email;

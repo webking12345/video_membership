@@ -12,6 +12,7 @@ class Media extends CI_Controller {
 		parent::__construct();
 		$this->load->model('users_model');
 		$this->load->model('category_model');
+		$this->load->model('introduction_model');
 		$this->load->model('contents_model');
 		$this->load->model('purchase_membership_model');
 		$this->load->model('purchase_contents_model');
@@ -36,8 +37,10 @@ class Media extends CI_Controller {
 		{
 			redirect("auth/login");
 		}
+		//get content by content id
+		$content_data = $this->contents_model->getOneContent($content_id);
 
-		if(!$this->purchase_membership_model->isMember($this->session->userdata("user_id")) && !$this->purchase_contents_model->is_purchased($content_id, $this->session->userdata("user_id")))
+		if($content_data->price > 0 && !$this->purchase_membership_model->isMember($this->session->userdata("user_id")) && !$this->purchase_contents_model->is_purchased($content_id, $this->session->userdata("user_id")))
 			redirect($_SERVER['HTTP_REFERER']);
 			
 		//keep theme
@@ -66,7 +69,7 @@ class Media extends CI_Controller {
 
 		//get content by content id
 		$data['view'] = 'contents';
-		$content_data = $this->contents_model->getOneContent($content_id);
+		
 		$data['thumb_url']=substr($content_data->thumb_url,0,6)=="public"?base_url().$content_data->thumb_url:$content_data->thumb_url;
 		$data['id']=$content_data->id;
 
@@ -121,12 +124,11 @@ class Media extends CI_Controller {
 		$data['resource'] = 'media';
 		$data['page'] = 'View';
 
-		//get content by content id
-		$cate_data = $this->category_model->getOneCategory($category_id);
-		$data['thumb_url']=substr($cate_data->thumb_url,0,6)=="public"?base_url().$cate_data->thumb_url:$cate_data->thumb_url;
-		$data['video_url']=substr($cate_data->video_url,0,6)=="public"?base_url().$cate_data->video_url:$cate_data->video_url;
-
-		$domain = str_replace('www.', '', parse_url($cate_data->video_url, PHP_URL_HOST));
+		//get intro video by category id
+		$cate_data = $this->introduction_model->getContents($category_id);
+		$data['thumb_url']=substr($cate_data['thumb_url'],0,6)=="public"?base_url().$cate_data['thumb_url']:$cate_data['thumb_url'];
+		$data['video_url']=substr($cate_data['contents_url'],0,6)=="public"?base_url().$cate_data['contents_url']:$cate_data['contents_url'];
+		$domain = str_replace('www.', '', parse_url($cate_data['contents_url'], PHP_URL_HOST));
 		$data['is_youtube'] = $domain=='youtube.com' || $domain=='youtu.be' ? true : false;
 
 		$this->load->view('header', $data);

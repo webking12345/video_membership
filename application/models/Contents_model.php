@@ -38,7 +38,7 @@ class Contents_model extends MY_model {
 		}
 		if($categoryId){
 			$sql .= ($flag ? ' AND ' : ' WHERE ');
-			$sql .= 'A.category_id='.(int)$categoryId;
+			$sql .= 'A.category_id IN (SELECT id FROM category WHERE class like concat((SELECT class from category where id=' . (int)$categoryId . '), "%"))';
 			$flag = 1;				
 		}
 		if($order&&($order==3||$order==4)){

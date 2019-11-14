@@ -59,7 +59,8 @@
                                 <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100" >login</button>
                             </a>
                         </div> -->
-                        <?php if(!$is_member && !$is_purchased) {?>
+                        <?php 
+                            if($content->price !== "0" && !$is_member && !$is_purchased) {?>
                             <div class="mt-4">
                                 <a href="<?php echo base_url(); ?>profile/join">
                                     <button type="button" class="<?php echo ($theme ? "brightly-btn" : "dark-purple-button") ?> w-100">join us!</button>
@@ -99,7 +100,7 @@
                                     <div class="catalog-item mr-2 ml-2" style="height:150px; background: url('<?php echo substr($similar_content->thumb_url,0,6)=="public"?base_url().$similar_content->thumb_url:$similar_content->thumb_url;?>') no-repeat; background-size:cover" >
                                         <div class="overlay">
                                             <div class="background">
-                                                <div class="font-color-light-blue pt-3"><?php echo $similar_content->title; ?></div>
+                                                <div class="font-color-light-blue pt-3"><?php echo strlen($similar_content->title) > 80 ? substr($similar_content->title,0,80) . "..." : $similar_content->title; ?></div>
                                                 <div class="font-color-light-blue" ><?php echo $similar_content->category_name; ?></div>
                                                 <a href="<?php echo base_url().'catalogue/details/'.$similar_content->id; ?>"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto <?php echo $theme?"brightly-btn" : "dark-purple-button";?>">view details</div></a>
                                             </div>                                

@@ -112,7 +112,7 @@
                         <div class="catalog-item" style="height:200px; background: url('<?php echo substr($content->thumb_url,0,6)=="public"?base_url().$content->thumb_url:$content->thumb_url;?>') no-repeat; background-size:cover">
                             <div class="overlay">
                                 <div class="background">
-                                    <div class="font-color-light-blue pt-5"><?php echo $content->title; ?></div>
+                                    <div class="font-color-light-blue pt-5"><?php echo strlen($content->title) > 80 ? (substr($content->title,0,80) . "...") : $content->title; ?></div>
                                     <div class="font-color-light-blue" ><?php echo $content->category_name; ?></div>
                                     <a href="<?php echo base_url().'catalogue/details/'.$content->id; ?>"><div style="background-color:rgb(0,0,0,0)" class="w-75 font-color-light-blue m-auto <?php echo $theme?"brightly-btn" : "dark-purple-button";?>">view details</div></a>
                                 </div>                                
